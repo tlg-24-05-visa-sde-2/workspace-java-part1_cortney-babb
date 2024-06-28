@@ -7,12 +7,12 @@ class TelevisionClient {
     public static void main(String[] args) {
         //instance of tv, set its properties
         Television tv1 = new Television();
-        tv1.brand = "Samsung";
-        tv1.volume = 32;
+        tv1.setBrand("Samsung");
+        tv1.setVolume(32);
 
         Television tv2 = new Television();
-        tv2.brand = "Sony";
-        tv2.volume = 50;
+        tv2.setBrand("Sony");
+        tv2.setVolume(50);
 
         //3rd tv object, but don't set its properties
         Television tv3 = new Television();
@@ -23,6 +23,13 @@ class TelevisionClient {
         tv2.turnOff();
         tv3.turnOn();
         tv3.turnOff();
+        // tv1.verifyInternetConnection(); private method in Television, no access
+        System.out.println();
+
+        // calling the toString()
+        System.out.println(tv1.toString());
+        System.out.println(tv2);
+        System.out.println(tv3);
 
     }
 }
