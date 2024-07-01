@@ -8,6 +8,14 @@ class AlarmClock {
     // accessor methods - provide controlled access to the objects fields
     private int snoozeInterval = 5; //default value when client doesn't specify one (instead of default of 0)
 
+    //constructors
+    public AlarmClock() { // no operations
+    }
+
+    public AlarmClock(int snoozeInterval) {
+        setSnoozeInterval(snoozeInterval); // delegate to setter for validation conversion (if any)
+    }
+
     // functions or operations - these are called "methods" in Java
     public void snooze() {
         System.out.println("Snoozing for " + snoozeInterval + " minutes");
