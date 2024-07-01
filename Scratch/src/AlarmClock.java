@@ -18,26 +18,28 @@ class AlarmClock {
 
     // functions or operations - these are called "methods" in Java
     public void snooze() {
-        System.out.println("Snoozing for " + snoozeInterval + " minutes");
+        System.out.println("Snoozing for " + getSnoozeInterval() + " minutes");
     }
 
     // accessor methods - provide "controlled access" to the objects fields
     public int getSnoozeInterval() {
         return snoozeInterval;
     }
-    // TODO: implement constraint - must be between 1 and 20 inclusive
+    // business constraint / error handling - must be between 1 and 20 inclusive
     // if the incoming value is "valid" we take it, assign to the private field
     // otherwise we reject w/ an error message
     public void setSnoozeInterval(int snoozeInterval) {
-        this.snoozeInterval = snoozeInterval;
+        if (snoozeInterval >= 1 && snoozeInterval <= 20) {
+            this.snoozeInterval = snoozeInterval;
+        } else {
+            System.out.println("Error: Invalid snooze interval: " + getSnoozeInterval() +
+                                ". Must be between 1 and 20 (inclusive).");
+        }
     }
-//    public void setSnoozeInterval(int snoozeIntervalIn) {
-//    snoozeInterval = snoozeIntervalIn;
-//    }
 
     // Purpose: return a string (sentence) describing this object
     public String toString() {
-        return "AlarmClock: snoozeInterval = " + snoozeInterval;
+        return "AlarmClock: snoozeInterval = " + getSnoozeInterval();
     }
 
 }
