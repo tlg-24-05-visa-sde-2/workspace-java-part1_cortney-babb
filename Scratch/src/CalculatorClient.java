@@ -17,7 +17,9 @@ class CalculatorClient {
 
         System.out.println("Number 24 is even? " + calc.isEven(24));
 
-        System.out.println("Random # from 1-11: " + calc.randomInt());
+        System.out.println("Random # from 5-16: " + calc.randomInt(5,16)); // min and max (2 parameters)
+        System.out.println("Random # from 1-20: " + calc.randomInt(20)); // one param with a default of 1 being min
+        System.out.println("Random # from 1-11: " + calc.randomInt()); // no param
 
     }
 
