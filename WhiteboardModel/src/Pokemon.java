@@ -41,11 +41,22 @@ class Pokemon {
                 " gained experience and has increased from level " + getLvl() + " to " + ++lvl + ".");
         System.out.println();
     }
-
+    // data validation: specific response types for evolution method
     public void evolve() {
-        System.out.println("Something is happening! " + getSpecies() + " is evolving.\n...\n" +
-                "Congratulations on your new Pokemon!");
-        System.out.println();
+        System.out.println("Something is happening! " + getSpecies() + " is evolving.\n...");
+        if (getSpecies().equals("Pikachu")) {
+            System.out.println("Pikachu has evolved into Raichu.");
+        } else if (getSpecies().equals("Squirtle")) {
+            System.out.println("Squirtle has evolved into Wartortle.");
+        } else if (getSpecies().equals("Charmander")) {
+            System.out.println("Charmander has evolved into Charmeleon.");
+        } else if (getSpecies().equals("Bulbasaur")) {
+            System.out.println("Bulbasaur has evolved into Ivysaur.");
+        } else {
+            System.out.println("Invalid species! Please select from the following starters:\n" +
+                            "Pikachu, Charmander, Squirtle, Bulbasaur");
+        }
+        System.out.println("Congratulations on your new Pokemon!\n");
     }
 
     public String chatter(String message) {
