@@ -2,7 +2,7 @@
  * This Pokemon application allows the user to partake in a battle with their chosen species.
  */
 class Pokemon {
-    // properties or attributes
+    // properties or attributes w/ data encapsulation
     private int lvl = 5; // default 5, min level
     private String species;
     private String rival;
@@ -21,13 +21,16 @@ class Pokemon {
     }
 
     public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
-        this(lvl, species, move);
+        this(lvl, species, move); // using this() to delegate to neighboring constructor above for lvl, species, move
+        // delegate to setters
+        setLvl(lvl);
+        setMove(move);
         setRival(rival);
         setDamage(damage);
         setDefeated(isDefeated);
     }
 
-    // methods
+    // business or "action" methods
     public void attack() {
         System.out.println(getSpecies() + " used " + getMove() + "!\n" + "It was " + getDamage() +
                 ".\n" + "Opponent " + getRival() + " fainted? " + getDefeated());
@@ -50,13 +53,18 @@ class Pokemon {
         return message;
     }
 
-    // getters and setters
+    // data encapsulation: getters and setters
     public int getLvl() {
         return lvl;
     }
-
+    // error handling / data constraint: level must be between 1 and 100 inclusive
     public void setLvl(int lvl) {
-        this.lvl = lvl;
+        if (lvl >= 1 && lvl <= 100) {
+            this.lvl = lvl;
+        } else {
+            System.out.println("Error: " + lvl + " is invalid. Level must be between 1 and 100 inclusive!");
+        }
+
     }
 
     public String getSpecies() {
