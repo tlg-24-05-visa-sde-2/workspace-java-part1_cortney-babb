@@ -14,18 +14,17 @@ class Pokemon {
     public Pokemon() { // default
     }
 
-    public Pokemon(int lvl, String species, String move) {
-        setLvl(lvl);
+    public Pokemon(String species) {
         setSpecies(species);
-        setMove(move);
     }
 
     public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
-        this(lvl, species, move); // using this() to delegate to neighboring constructor above for lvl, species, move
+        // using this() to delegate to neighboring constructor above for species
+        this(species);
         // delegate to setters
         setLvl(lvl);
-        setMove(move);
         setRival(rival);
+        setMove(move);
         setDamage(damage);
         setDefeated(isDefeated);
     }

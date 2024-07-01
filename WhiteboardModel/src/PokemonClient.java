@@ -24,8 +24,8 @@ class PokemonClient {
         pk2.attack();
         pk2.levelUp();
 
-
-        Pokemon pk3 = new Pokemon(29, "Charmander", "Fire spin");
+        // utilizes constraint and takes default values for lvl and move
+        Pokemon pk3 = new Pokemon("Charmander");
         System.out.println("Pokemon 3:");
         System.out.println("Pokedex Data: " + pk3.getSpecies() + " is level " +
                             pk3.getLvl() + " and knows the move " + pk3.getMove() +
