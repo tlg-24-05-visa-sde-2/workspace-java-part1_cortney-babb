@@ -5,15 +5,15 @@
 class Television {
     // properties or attributes - "fields" or "instance variables"
     // default values when values are not specified
-    private String brand;
+    private String brand = "Toshiba";
     private int volume = 1;
 
     // methods
    public void turnOn() {
         // call private method for this task
          boolean isConnected = verifyInternetConnection();
-         System.out.println(verifyInternetConnection());
-         System.out.println();
+         //System.out.println(verifyInternetConnection());
+        // System.out.println();
 
 
         System.out.println("Turning on your " + brand + " television to volume " + volume);
