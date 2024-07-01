@@ -12,11 +12,11 @@ class Television {
    public void turnOn() {
         // call private method for this task
          boolean isConnected = verifyInternetConnection();
-         //System.out.println(verifyInternetConnection());
-        // System.out.println();
+         // System.out.println(verifyInternetConnection());
+         System.out.println();
 
 
-        System.out.println("Turning on your " + brand + " television to volume " + volume);
+        System.out.println("Turning on your " + getBrand() + " television to volume " + getVolume());
     }
 
     public void turnOff() {
@@ -46,6 +46,6 @@ class Television {
 
     //toString()
     public String toString() {
-       return "Television: brand=" + brand + ", volume=" + volume;
+       return "Television: brand=" + getBrand() + ", volume=" + getVolume();
     }
 }

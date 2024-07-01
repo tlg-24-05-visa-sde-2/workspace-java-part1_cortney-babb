@@ -19,7 +19,7 @@ class TelevisionClient {
 
         tv1.turnOn();
         tv1.turnOff();
-        // tv1.verifyInternetConnection(); private method in Television, no access
+        // tv1.verifyInternetConnection(); // private method in Television, no access
         tv2.turnOn();
         tv2.turnOff();
         tv3.turnOn();
