@@ -12,19 +12,19 @@ class Pokemon {
 
     //methods
     public void attack() {
-        System.out.println(species + " used " + move + "!\n" + "It was " + damage +
-                ".\n" + "Opponent " + rival + " fainted? " + isDefeated);
+        System.out.println(getSpecies() + " used " + getMove() + "!\n" + "It was " + getDamage() +
+                ".\n" + "Opponent " + getRival() + " fainted? " + getDefeated());
         System.out.println();
     }
 
     public void levelUp() {
-        System.out.println(species + " has battled against " + rival + ".\n" + species +
-                " gained experience and has increased from level " + lvl + " to " + ++lvl + ".");
+        System.out.println(getSpecies() + " has battled against " + getRival() + ".\n" + getSpecies() +
+                " gained experience and has increased from level " + getLvl() + " to " + ++lvl + ".");
         System.out.println();
     }
 
     public void evolve() {
-        System.out.println("Something is happening! " + species + " is evolving.\n...\n" +
+        System.out.println("Something is happening! " + getSpecies() + " is evolving.\n...\n" +
                 "Congratulations on your new Pokemon!");
         System.out.println();
     }
@@ -84,7 +84,7 @@ class Pokemon {
 
     // toString()
     public String toString() {
-        return "Pokemon: species=" + species + ", rival=" + rival + ", move=" + move +
-                ", damage=" + damage + ", isDefeated=" + isDefeated;
+        return "Pokemon: species=" + getSpecies() + ", rival=" + getRival() + ", move=" + getMove() +
+                ", damage=" + getDamage() + ", isDefeated=" + getDefeated();
     }
 }
