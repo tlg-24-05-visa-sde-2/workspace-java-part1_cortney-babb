@@ -6,16 +6,13 @@ class TelevisionClient {
     //entry point
     public static void main(String[] args) {
         //instance of tv, set its properties
-        Television tv1 = new Television();
-        tv1.setBrand("Samsung");
-        tv1.setVolume(32);
+        Television tv1 = new Television("Samsung", 32);
 
-        Television tv2 = new Television();
-        tv2.setBrand("Sony");
-        tv2.setVolume(50);
+        Television tv2 = new Television("Sony", 50);
 
         //3rd tv object, but don't set its properties
-        Television tv3 = new Television();
+        Television tv3 = new Television("LG");
+
 
         tv1.turnOn();
         tv1.turnOff();

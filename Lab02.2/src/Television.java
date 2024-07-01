@@ -8,6 +8,19 @@ class Television {
     private String brand = "Toshiba";
     private int volume = 1;
 
+    // constructors
+    public Television() {
+    }
+
+    public Television(String brand) {
+        setBrand(brand);
+    }
+
+    public Television(String brand, int volume) {
+        this(brand);
+        setVolume(volume);
+    }
+
     // methods
    public void turnOn() {
         // call private method for this task

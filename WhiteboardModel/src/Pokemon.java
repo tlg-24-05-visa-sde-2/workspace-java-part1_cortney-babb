@@ -10,7 +10,10 @@ class Pokemon {
     private String damage = "No effect"; // constraint: ["No effect", "Not very effective", "Effective", "Super Effective"]
     private Boolean isDefeated;
 
-    //methods
+    // constructors
+
+
+    // methods
     public void attack() {
         System.out.println(getSpecies() + " used " + getMove() + "!\n" + "It was " + getDamage() +
                 ".\n" + "Opponent " + getRival() + " fainted? " + getDefeated());
