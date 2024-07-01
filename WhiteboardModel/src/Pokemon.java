@@ -2,16 +2,30 @@
  * This Pokemon application allows the user to partake in a battle with their chosen species.
  */
 class Pokemon {
-    // properties or attributes (5-6 max)
+    // properties or attributes
     private int lvl = 5; // default 5, min level
-    private String species; // constraint: ["Charmander", "Squirtle", "Bulbasaur", "Pikachu"]
-    private String rival; // constraint: ["Charmander", "Squirtle", "Bulbasaur", "Pikachu"]
-    private String move = "Run Away"; //defaulted move when none are chosen
-    private String damage = "No effect"; // constraint: ["No effect", "Not very effective", "Effective", "Super Effective"]
+    private String species;
+    private String rival;
+    private String move = "Run Away"; //default move
+    private String damage = "No effect"; // default damage
     private Boolean isDefeated;
 
     // constructors
+    public Pokemon() { // default
+    }
 
+    public Pokemon(int lvl, String species, String move) {
+        setLvl(lvl);
+        setSpecies(species);
+        setMove(move);
+    }
+
+    public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
+        this(lvl, species, move);
+        setRival(rival);
+        setDamage(damage);
+        setDefeated(isDefeated);
+    }
 
     // methods
     public void attack() {
@@ -87,7 +101,7 @@ class Pokemon {
 
     // toString()
     public String toString() {
-        return "Pokemon: species=" + getSpecies() + ", rival=" + getRival() + ", move=" + getMove() +
+        return "Pokemon: species=" + getSpecies() + ", level=" + getLvl() + ", rival=" + getRival() + ", move=" + getMove() +
                 ", damage=" + getDamage() + ", isDefeated=" + getDefeated();
     }
 }

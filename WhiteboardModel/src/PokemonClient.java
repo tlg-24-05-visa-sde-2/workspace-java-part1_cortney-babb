@@ -2,17 +2,11 @@
  * Main class for application
  */
 class PokemonClient {
-
     public static void main(String[] args) {
-        //instances & properties
-        Pokemon pk1 = new Pokemon();
-        pk1.setLvl(20);
-        pk1.setSpecies("Pikachu");
-        pk1.setRival("Squirtle");
-        pk1.setMove("Thundershock");
-        pk1.setDamage("Super effective");
-        pk1.setDefeated(true);
 
+        //instances & properties
+        Pokemon pk1 = new Pokemon(20, "Pikachu", "Squirtle", "Thundershock",
+                    "Super effective", true);
         //calling the instance/methods
         System.out.println("Pokemon 1:");
         String msg = pk1.chatter("~Pika pi!");
@@ -22,14 +16,8 @@ class PokemonClient {
         pk1.evolve();
 
 
-        Pokemon pk2 = new Pokemon();
-        pk2.setLvl(10);
-        pk2.setSpecies("Bulbasaur");
-        pk2.setRival("Charmander");
-        pk2.setMove("Vine Whip");
-        pk2.setDamage("Not very effective");
-        pk2.setDefeated(false);
-
+        Pokemon pk2 = new Pokemon(10, "Bulbasaur", "Charmander",
+                    "Vine Whip", "Not very effective", false);
         System.out.println("Pokemon 2:");
         msg = pk2.chatter("~Bulba..bulbaSAUR!");
         System.out.println(pk2.getSpecies() + ": " + msg);
@@ -37,9 +25,17 @@ class PokemonClient {
         pk2.levelUp();
 
 
+        Pokemon pk3 = new Pokemon(29, "Charmander", "Fire spin");
+        System.out.println("Pokemon 3:");
+        System.out.println("Pokedex Data: " + pk3.getSpecies() + " is level " +
+                            pk3.getLvl() + " and knows the move " + pk3.getMove() +
+                            ". Would you like it to learn a new move?\ny/n");
+
+
         System.out.println("\ntoString() Data:");
         // calling toString()
         System.out.println(pk1.toString());
         System.out.println(pk2);
+        System.out.println(pk3);
     }
 }
