@@ -1,30 +1,31 @@
 class Calculator {
 
-    double add(double a, double b) {
+
+
+    public static double add(double a, double b) {
         return a + b;
     }
 
-    double subtract(double a, double b) {
+    public static double subtract(double a, double b) {
         return a - b;
     }
 
-    double multiply(double a, double b) {
+    public static double multiply(double a, double b) {
         return a * b;
     }
 
-    double divide(double a, double b) {
+    public static double divide(double a, double b) {
         return a / b;
     }
 
-    boolean isEven(int value) {
+    public static boolean isEven(int value) {
         return value % 2 == 0;
     }
 
     /*
      * Returns a random integer between min and max (inclusive)
-     * TODO: implement this algorithm
      */
-    int randomInt(int min, int max) { // Min = 5, Max = 16
+    public static int randomInt(int min, int max) { // Min = 5, Max = 16
         /*
          * alternative result (the breakdown method):
          * int result = 0;
@@ -41,7 +42,7 @@ class Calculator {
     /*
      * returns a random int between 1 and 'max'
      */
-    int randomInt(int max) {
+    public static int randomInt(int max) {
         return randomInt(1, max); // delegate to "min-max" version, 1 and "max"
     }
 
@@ -51,7 +52,7 @@ class Calculator {
      * These methods are all "static", which means you call them:
      *  Math.methodName()
      */
-    int randomInt(){
+    public static int randomInt(){
         return randomInt(1, 11); // delegate to "min-max" version, 1 for min and 11 for max
 
 //        int result = 0;
