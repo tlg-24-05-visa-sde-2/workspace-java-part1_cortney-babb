@@ -57,20 +57,21 @@ class Pokemon {
     }
     // data validation: specific response types for evolution method
     public void evolve() {
-        System.out.println("Something is happening! " + getSpecies() + " is evolving.\n...");
+        String msg1 = "Something is happening! " + getSpecies() + " is evolving.\n...\n";
+        String msg2 = "\nCongratulations on your new Pokemon!\n";
+
         if (getSpecies().equals("Pikachu")) {
-            System.out.println("Pikachu has evolved into Raichu.");
+            System.out.println(msg1 + "Pikachu has evolved into Raichu." + msg2);
         } else if (getSpecies().equals("Squirtle")) {
-            System.out.println("Squirtle has evolved into Wartortle.");
+            System.out.println(msg1 + "Squirtle has evolved into Wartortle." + msg2);
         } else if (getSpecies().equals("Charmander")) {
-            System.out.println("Charmander has evolved into Charmeleon.");
+            System.out.println(msg1 + "Charmander has evolved into Charmeleon." + msg2);
         } else if (getSpecies().equals("Bulbasaur")) {
-            System.out.println("Bulbasaur has evolved into Ivysaur.");
+            System.out.println(msg1 + "Bulbasaur has evolved into Ivysaur."+ msg2);
         } else {
             System.out.println("Invalid species! Please select from the following starters:\n" +
                             "Pikachu, Charmander, Squirtle, Bulbasaur");
         }
-        System.out.println("Congratulations on your new Pokemon!\n");
     }
 
     public String chatter(String message) {

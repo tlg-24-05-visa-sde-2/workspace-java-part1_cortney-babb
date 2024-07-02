@@ -14,6 +14,16 @@ class PokemonValidationTest {
 
         pkmn.setLvl(101); // error message, value rejected (value is still 100)
         System.out.println(pkmn);
-    }
 
+        System.out.println();
+
+        // pokemon evolution testing
+        Pokemon squirtle = new Pokemon("Squirtle");
+        System.out.println("Pokemon (Squirtle): " + squirtle.getSpecies());
+        squirtle.evolve();
+
+        Pokemon random = new Pokemon("Random");
+        System.out.println("Pokemon (Random): " + random.getSpecies());
+        random.evolve();
+    }
 }
