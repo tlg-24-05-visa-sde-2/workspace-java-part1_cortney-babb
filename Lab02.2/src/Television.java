@@ -20,6 +20,8 @@ class Television {
     // default values when values are not specified
     private String brand = "Toshiba";
     private int volume = 1;
+    private boolean isMuted;
+    private int oldVolume;
 
     // constructors
     public Television() {
@@ -52,13 +54,38 @@ class Television {
         System.out.println("Turning off... goodbye!");
     }
 
+    public void mute() {
+
+        if (!isMuted) {
+            // store current volume in oldVolume
+            oldVolume = this.volume;
+            // set volume to 0
+            setVolume(MIN_VOLUME);
+            // set muted flag to true
+            isMuted = true;
+            System.out.println("Is muted");
+        } else {
+            // restore volume from oldVolume
+            volume = oldVolume;
+            // set muted flag to false
+            isMuted = false;
+            System.out.println("Is unmuted");
+        }
+    }
+
     //accessor methods
     public String getBrand() {
         return brand;
     }
 
     public void setBrand(String brand) {
-        this.brand = brand;
+        // validate brand, samsung, lg, sony, toshiba only valid brands
+        if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Sony") || brand.equals("Toshiba") ) {
+            this.brand = brand;
+        } else {
+            System.out.println("Error: Invalid brand. Your selection of brands must be one of the following:" +
+                    "Samsung, LG, Sony, Toshiba");
+        }
     }
 
     public int getVolume() {
@@ -66,7 +93,17 @@ class Television {
     }
 
     public void setVolume(int volume) {
-        this.volume = volume;
+        // if greater than or equal to 0 && less than or equal to 100
+        if (volume >= MIN_VOLUME && volume <= MAX_VOLUME) {
+            this.volume = volume;
+            isMuted = false; // clear the isMuted flag
+        } else {
+            System.out.println("Error: Invalid number! Volume must be between " + MIN_VOLUME + " and " + MAX_VOLUME);
+        }
+    }
+
+    public boolean isMuted() {
+        return isMuted;
     }
 
     private boolean verifyInternetConnection() {
@@ -75,6 +112,7 @@ class Television {
 
     //toString()
     public String toString() {
-       return "Television: brand=" + getBrand() + ", volume=" + getVolume();
+        String volumeString = isMuted() ? "Muted" : String.valueOf(getVolume());
+       return "Television: brand=" + getBrand() + ", volume=" + volumeString;
     }
 }
