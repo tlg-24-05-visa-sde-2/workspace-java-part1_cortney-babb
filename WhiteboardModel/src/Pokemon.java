@@ -1,13 +1,20 @@
 /*
- * This Pokemon application allows the user to partake in a battle with their chosen species.
+ * This Pokemon application allows the user to partake in a battle with their
+ * chosen species from only the Kanto starters.
  */
 class Pokemon {
+    // static "shared" public fields not to be changed, min and max valid lvl
+    // also class constants
+    public static final int MIN_LVL = 1;
+    public static final int MAX_LVL = 100;
+
     // properties or attributes w/ data encapsulation
-    private int lvl = 5; // default 5, min level
-    private String species;
-    private String rival;
-    private String move = "Run Away"; //default move
-    private String damage = "No effect"; // default damage
+    private int lvl = 5; // default 5
+    private String species; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
+    private String rival; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
+    private String move = "Run Away"; // default move
+    private String damage = "No effect"; // default damage constraint: ["No effect",
+                                         // "Not very effective", "Effective", "Very effective"]
     private Boolean isDefeated;
 
     // constructors
@@ -18,27 +25,34 @@ class Pokemon {
         setSpecies(species);
     }
 
-    public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
-        // using this() to delegate to neighboring constructor above for species
+    public Pokemon(String species, String move) {
         this(species);
+        setMove(move);
+    }
+
+    public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
+        // using this() to delegate to neighboring constructor above for species and move
+        this(species, move);
         // delegate to setters
         setLvl(lvl);
         setRival(rival);
-        setMove(move);
         setDamage(damage);
         setDefeated(isDefeated);
     }
 
     // business or "action" methods
     public void attack() {
-        System.out.println(getSpecies() + " used " + getMove() + "!\n" + "It was " + getDamage() +
-                ".\n" + "Opponent " + getRival() + " fainted? " + getDefeated());
+        System.out.println(getSpecies() + " used " + getMove() + "!\n" +
+                "It was " + getDamage() + ".\n" + "Opponent " +
+                getRival() + " fainted? " + getDefeated());
         System.out.println();
     }
 
     public void levelUp() {
-        System.out.println(getSpecies() + " has battled against " + getRival() + ".\n" + getSpecies() +
-                " gained experience and has increased from level " + getLvl() + " to " + ++lvl + ".");
+        System.out.println(getSpecies() + " has battled against " +
+                getRival() + ".\n" + getSpecies() +
+                " gained experience and has increased from level " +
+                getLvl() + " to " + ++lvl + ".");
         System.out.println();
     }
     // data validation: specific response types for evolution method
@@ -69,10 +83,11 @@ class Pokemon {
     }
     // error handling / data constraint: level must be between 1 and 100 inclusive
     public void setLvl(int lvl) {
-        if (lvl >= 1 && lvl <= 100) {
+        if (lvl >= MIN_LVL && lvl <= MAX_LVL) {
             this.lvl = lvl;
         } else {
-            System.out.println("Error: " + lvl + " is invalid. Level must be between 1 and 100 inclusive!");
+            System.out.println("Error: " + lvl +
+                    " is invalid. Level must be between" + MIN_LVL + " and " + MAX_LVL + " inclusive!");
         }
 
     }
@@ -119,7 +134,8 @@ class Pokemon {
 
     // toString()
     public String toString() {
-        return "Pokemon: species=" + getSpecies() + ", level=" + getLvl() + ", rival=" + getRival() + ", move=" + getMove() +
+        return "Pokemon: species=" + getSpecies() + ", level=" + getLvl() +
+                ", rival=" + getRival() + ", move=" + getMove() +
                 ", damage=" + getDamage() + ", isDefeated=" + getDefeated();
     }
 }
