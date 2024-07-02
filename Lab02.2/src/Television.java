@@ -3,6 +3,19 @@
  * it has properties/attributes and business methods but no main() method
  */
 class Television {
+    // class-level "static" variables - these live in the "shared area" above the instances, ALL_CAP naming
+    public static final int MIN_VOLUME = 0;
+    public static final int MAX_VOLUME = 100;
+    private static int instanceCount = 0;
+
+    public static int getInstanceCount() {
+        // boolean isConnected = verifyInternetConnection();
+        // ^^^ cannot be called here bc static methods can't directly call instance methods
+        // w/o having a reference to a specific instance (object)
+        return instanceCount;
+    }
+    // ****************************************************************************
+
     // properties or attributes - "fields" or "instance variables"
     // default values when values are not specified
     private String brand = "Toshiba";
@@ -10,9 +23,11 @@ class Television {
 
     // constructors
     public Television() {
+        instanceCount++;
     }
 
     public Television(String brand) {
+        this();
         setBrand(brand);
     }
 
@@ -22,6 +37,7 @@ class Television {
     }
 
     // methods
+
    public void turnOn() {
         // call private method for this task
          boolean isConnected = verifyInternetConnection();
