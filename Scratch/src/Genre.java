@@ -1,0 +1,3 @@
+enum Genre {
+    ANIME, HORROR, DRAMA, COMEDY, ACTION, SCI_FI, CARTOON
+}

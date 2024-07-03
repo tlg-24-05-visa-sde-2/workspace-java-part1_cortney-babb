@@ -3,19 +3,25 @@ class Movie {
     private String title;
     private int year;
     private double revenue;
+    private Rating rating = Rating.PG;
+    private Genre genre;
 
     // constructors
-    public Movie() {
-    }
-
     public Movie(String title) {
         setTitle(title);
     }
+
+    public Movie(String title, Genre genre) {
+        this(title);
+        setGenre(genre);
+    }
+
     // reduces redundancy via title being in 2 separate constructors
-    public Movie(String title, int year, double revenue) {
-        this(title); // delegate to ctor above for title
+    public Movie(String title, int year, double revenue, Rating rating, Genre genre) {
+        this(title, genre); // delegate to ctor above for title
         setYear(year);
         setRevenue(revenue);
+        setRating(rating);
     }
 // alternative for above since constructor 1 & 2 both have string title in common:
 //    public Movie(String title, int year, double revenue) {
@@ -54,10 +60,28 @@ class Movie {
         this.year = year;
     }
 
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void setRating(Rating rating) {
+        this.rating = rating;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     // toString() method
     public String toString() {
         return "Movie: Title=" + getTitle() +
                 ", Year=" + getYear() +
-                ", Revenue=" + getRevenue();
+                ", Revenue=" + getRevenue() +
+                ", Rating=" + getRating() +
+                ", Genre=" + getGenre();
     }
 }

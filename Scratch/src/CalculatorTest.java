@@ -15,10 +15,14 @@ class CalculatorTest {
                 break;
             }
         }
-        if (isCorrect) {
-            System.out.println("It works! :)");
-        } else {
-            System.out.println("It does not work! :(");
-        }
+        // ternary expression: assign one thing or another to a variable depending on condition
+        String msg = (isCorrect) ? "It works! :)" : "It does not work! :(";
+        System.out.println(msg);
+
+//        if (isCorrect) {
+//            System.out.println("It works! :)");
+//        } else {
+//            System.out.println("It does not work! :(");
+//        }
     }
 }
