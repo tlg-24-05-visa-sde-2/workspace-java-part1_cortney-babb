@@ -22,6 +22,7 @@ class Television {
     private int volume = 1;
     private boolean isMuted;
     private int oldVolume;
+    private DisplayType display = DisplayType.LED;
 
     // constructors
     public Television() {
@@ -36,6 +37,10 @@ class Television {
     public Television(String brand, int volume) {
         this(brand);
         setVolume(volume);
+    }
+    public Television(String brand, int volume, DisplayType display) {
+        this(brand, volume);
+        setDisplay(display);
     }
 
     // methods
@@ -102,6 +107,14 @@ class Television {
         }
     }
 
+    public DisplayType getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(DisplayType display) {
+        this.display = display;
+    }
+
     public boolean isMuted() {
         return isMuted;
     }
@@ -113,6 +126,7 @@ class Television {
     //toString()
     public String toString() {
         String volumeString = isMuted() ? "Muted" : String.valueOf(getVolume());
-       return "Television: brand=" + getBrand() + ", volume=" + volumeString;
+       return "Television: brand=" + getBrand() +
+               ", volume=" + volumeString + " display=" + getDisplay();
     }
 }

@@ -7,14 +7,20 @@ class TelevisionClient {
     public static void main(String[] args) {
         System.out.println(Television.getInstanceCount() + " instances");
         //instance of tv, set its properties
-        Television tv1 = new Television("Samsung", 32);
+        Television tv = new Television("Sony", 40);
 
-        Television tv2 = new Television("Sony", Television.MAX_VOLUME);
+        Television tv1 = new Television();
+        tv1.setBrand("Samsung");
+        tv1.setVolume(32);
+        tv1.setDisplay(DisplayType.PLASMA);
+
+        Television tv2 = new Television("Sony", 50,  DisplayType.OLED);
 
         //3rd tv object
-        Television tv3 = new Television("LG", Television.MIN_VOLUME);
+        Television tv3 = new Television("LG", Television.MAX_VOLUME);
 
-
+        tv.turnOn();
+        tv.turnOff();
         tv1.turnOn();
         tv1.turnOff();
         // tv1.verifyInternetConnection(); // private method in Television, no access
@@ -26,6 +32,7 @@ class TelevisionClient {
         System.out.println();
 
         // calling the toString()
+        System.out.println(tv);
         System.out.println(tv1.toString());
         System.out.println(tv2);
         System.out.println(tv3);
