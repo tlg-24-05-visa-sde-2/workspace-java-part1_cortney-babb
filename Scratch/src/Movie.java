@@ -1,9 +1,9 @@
 class Movie {
     // fields or instance variables
     private String title;
-    private int year;
-    private double revenue;
-    private Rating rating = Rating.PG;
+    private Integer year;
+    private Double revenue;
+    private Rating rating;
     private Genre genre;
 
     // constructors
@@ -17,7 +17,7 @@ class Movie {
     }
 
     // reduces redundancy via title being in 2 separate constructors
-    public Movie(String title, int year, double revenue, Rating rating, Genre genre) {
+    public Movie(String title, Integer year, Double revenue, Rating rating, Genre genre) {
         this(title, genre); // delegate to ctor above for title
         setYear(year);
         setRevenue(revenue);
@@ -36,11 +36,11 @@ class Movie {
     // play() pause() rewind() fastForward() stop() goTo()
 
     // accessor methods, provides controlled access to the objects (private) fields
-    public double getRevenue() {
+    public Double getRevenue() {
         return revenue;
     }
 
-    public void setRevenue(double revenue) {
+    public void setRevenue(Double revenue) {
         this.revenue = revenue;
     }
 
@@ -52,11 +52,11 @@ class Movie {
         this.title = title;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

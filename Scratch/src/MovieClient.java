@@ -3,6 +3,8 @@ class MovieClient {
         Movie mv1 = new Movie("Black Panther");
         mv1.setYear(2018);
         mv1.setRevenue(1_346_913_171.0);
+        mv1.setRating(Rating.PG_13);
+        mv1.setGenre(Genre.ACTION);
         System.out.println(mv1);
         System.out.println();
 
