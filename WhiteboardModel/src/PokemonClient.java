@@ -1,3 +1,5 @@
+import java.time.*;
+
 /*
  * Main class for application
  */
@@ -19,18 +21,20 @@ class PokemonClient {
                     "Vine Whip", DamageType.NOT_VERY_EFFECTIVE, false);
         System.out.println("Pokemon 2:\n" + pk2.getSpecies() + " vs " + pk2.getRival());
         System.out.println(pk2.getSpecies() + ": " + pk2.chatter());
+        pk2.rivalAttack("Scratch", DamageType.EFFECTIVE);
         pk2.attack();
+        pk2.rivalAttack("Ember", DamageType.SUPER_EFFECTIVE);
+        pk2.setDefeated(false);
+        pk2.levelUp();
         pk2.evolve();
 
         // utilizes constraint with 3 arguments and takes default value for lvl
-        Pokemon pk3 = new Pokemon(12, "Charmander", "Ember");
-        System.out.println("Pokemon 3:");
+        Pokemon pk3 = new Pokemon(12, "Squirtle", "Pikachu", "Bubblebeam");
+        System.out.println("Pokemon 3:\n" + pk3.getSpecies() + " vs " + pk3.getRival());
         System.out.println(pk3.getSpecies() + ": " + pk3.chatter());
-        System.out.println("Pokedex Data: " + pk3.getSpecies() + " is currently level " +
-                           pk3.getLvl()+ " and knows the move " + pk3.getMove() +
-                            ". Would you like it to learn a new move?\ny/n");
-        pk3.setMove("Fire spin");
-        System.out.println("User selected y.\nCharmander learned " + pk3.getMove() + "!");
+        pk3.catching(false);
+        pk3.rivalAttack("Growl", DamageType.NO_EFFECT);
+        pk3.catching(true);
 
 
         System.out.println("\ntoString() Data:");
