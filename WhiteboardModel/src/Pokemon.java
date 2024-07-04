@@ -13,12 +13,12 @@ class Pokemon {
     private String species; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
     private String rival; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
     private String move = "Run Away"; // default move
-    private String damage = "No effect"; // default damage constraint: ["No effect",
+    private DamageType damage = DamageType.NO_EFFECT; // default damage constraint: ["No effect",
                                          // "Not very effective", "Effective", "Very effective"]
     private Boolean isDefeated;
 
     // constructors
-    public Pokemon() { // default
+    public Pokemon() {
     }
 
     public Pokemon(String species) {
@@ -31,7 +31,7 @@ class Pokemon {
         setMove(move);
     }
 
-    public Pokemon(int lvl, String species, String rival, String move, String damage, Boolean isDefeated) {
+    public Pokemon(int lvl, String species, String rival, String move, DamageType damage, Boolean isDefeated) {
         // using this() to delegate to neighboring constructor above for lvl, species and move
         this(lvl, species, move);
         // delegate to setters
@@ -49,7 +49,7 @@ class Pokemon {
     }
 
     public void levelUp() {
-        System.out.println(getSpecies() + " has battled against " +
+        System.out.println(getSpecies() + " has defeated " +
                 getRival() + ".\n" + getSpecies() +
                 " gained experience and has increased from level " +
                 getLvl() + " to " + ++lvl + ".");
@@ -62,32 +62,31 @@ class Pokemon {
         int evolveLvl = 0;
         boolean isEvolving = false;
         // assigns an evolutionary level to each Pokemon and outputs executes evolution if it is true
-        if (getSpecies().equals("Pikachu") && getLvl() == 25) {
+        if (getSpecies().equals("Pikachu") && getLvl() >= 25) {
             evolveLvl = 25;
             isEvolving = true;
-            if (getLvl() >= 25) {
-                System.out.println(msg1 + "Pikachu has evolved into Raichu." + msg2);
-            }
+            System.out.println(msg1 + "Pikachu has evolved into Raichu." + msg2);
+
         } else if (getSpecies().equals("Squirtle") && getLvl() >= 32) {
             evolveLvl = 32;
             isEvolving = true;
-            if (getLvl() >= 32) {
-                System.out.println(msg1 + "Squirtle has evolved into Wartortle." + msg2);
-            }
+            System.out.println(msg1 + "Squirtle has evolved into Wartortle." + msg2);
+
         } else if (getSpecies().equals("Charmander") && getLvl() >= 35) {
             evolveLvl = 35;
             isEvolving = true;
-            if (getLvl() >= 35) {
-                System.out.println(msg1 + "Charmander has evolved into Charmeleon." + msg2);
-            }
+            System.out.println(msg1 + "Charmander has evolved into Charmeleon." + msg2);
+
         } else if (getSpecies().equals("Bulbasaur") && getLvl() >= 30) {
             evolveLvl = 30;
             isEvolving = true;
-            if (getLvl() >= 30) {
-                System.out.println(msg1 + "Bulbasaur has evolved into Ivysaur." + msg2);
-            }
+            System.out.println(msg1 + "Bulbasaur has evolved into Ivysaur." + msg2);
+
         }
-        // checks to see if pokemon is at evolution level to display message/lvl if it is ready or not
+        // ternary expression checks to see if pokemon is at evolution level to display message/lvl if it is ready or not
+//        String evolveOutput = (isEvolving) ? getSpecies() + " is not ready to evolve.\nCurrent level: " +
+//                                    getLvl() + "\n" : getSpecies() + " evolved at level " + evolveLvl + ".\n";
+//        System.out.println(evolveOutput);
         if (!isEvolving) {
             System.out.println(getSpecies() + " is not ready to evolve.\nCurrent level: " +
                     getLvl() + "\n");
@@ -96,8 +95,6 @@ class Pokemon {
         }
 
     }
-
-
 
     // assigns a message to each Pokemon
     public String chatter() {
@@ -160,12 +157,12 @@ class Pokemon {
     public void setMove(String move) {
         this.move = move;
     }
-
-    public String getDamage() {
+    // ENUM usage
+    public DamageType getDamage() {
         return damage;
     }
-
-    public void setDamage(String damage) {
+    // ENUM usage
+    public void setDamage(DamageType damage) {
         this.damage = damage;
     }
 
@@ -179,8 +176,8 @@ class Pokemon {
 
     // toString()
     public String toString() {
-        return "Pokemon: species=" + getSpecies() + ", level=" + getLvl() +
-                ", rival=" + getRival() + ", move=" + getMove() +
-                ", damage=" + getDamage() + ", isDefeated=" + getDefeated();
+        return String.format("Pokemon: species=%s, level=%s, rival=%s, " +
+                "move=%s, damage=%s, isDefeated=%s", getSpecies(), getLvl(),
+                getRival(), getMove(), getDamage(), getDefeated());
     }
 }
