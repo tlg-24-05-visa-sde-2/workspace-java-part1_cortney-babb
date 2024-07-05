@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+// date/time usage + formatting
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,7 +18,7 @@ class Pokemon {
     private String rival; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
     private String move = "Run Away"; // default move
     private DamageType damage = DamageType.NO_EFFECT; // default damage constraint: ["No effect",
-                                         // "Not very effective", "Effective", "Very effective"]
+    // "Not very effective", "Effective", "Very effective"]
     private boolean isDefeated;
 
     // constructors
@@ -62,19 +62,19 @@ class Pokemon {
         System.out.println("Enemy " + getRival() + " used " + move + "!");
 
         if (getDamage().equals(DamageType.NO_EFFECT)) {
-            System.out.println("It had no effect.");
+            System.out.println("It had " + DamageType.NO_EFFECT + ".");
         } else {
             System.out.println("It was " + damage + ".");
         }
         System.out.println();
     }
+
     // levels up or outputs if user's pokemon has been defeated
     public void levelUp() {
         if (getDefeated()) {
             isDefeated = true;
             System.out.println("Enemy " + getRival() + " has been defeated!");
-            System.out.println(getSpecies() + " gained experience and has increased from level " +
-                    getLvl() + " to " + (++lvl) + ".");
+            System.out.println(getSpecies() + " gained experience and has increased from level " + getLvl() + " to " + (++lvl) + ".");
         } else {
             isDefeated = false;
             System.out.println(getSpecies() + " has fainted.");
@@ -86,14 +86,12 @@ class Pokemon {
     public void evolve() {
         String msg1 = "Something is happening! " + getSpecies() + " is evolving.\n...\n";
         String msg2 = "\nCongratulations on your new Pokemon!\n";
-        String msg3 = getSpecies() + " is not ready to evolve.\nCurrent level: " +
-                getLvl() + "\nEvolution level: ";
+        String msg3 = getSpecies() + " is not ready to evolve.\nCurrent level: " + getLvl() + "\nEvolution level: ";
         boolean isEvolving = false;
 
         // assigns an evolutionary level to each Pokemon and outputs executes evolution if it is true
         if (getSpecies().equals("Pikachu") && getLvl() >= 25) {
             isEvolving = true;
-//            System.out.printf("╔═╦╦╦╦═╦═╦╦╦╗╔╗\n║║║║═╣═║╔╣╩║║║║\n║╔╣║║║║║╚╣║║╚╝║\n╚╝╚╩╩╩╩╩═╩╩╩══╝\n");
             System.out.println(msg1 + "Pikachu has evolved into Raichu." + msg2);
 
         } else if (getSpecies().equals("Squirtle") && getLvl() >= 32) {
@@ -137,6 +135,7 @@ class Pokemon {
         }
         return chat;
     }
+
     // catch / fail output
     public boolean catching(boolean isCaught) {
         System.out.println("You threw a Pokeball!");
@@ -158,8 +157,6 @@ class Pokemon {
     }
 
 
-
-
     // data encapsulation: getters and setters
     public int getLvl() {
         return lvl;
@@ -170,8 +167,8 @@ class Pokemon {
         if (lvl >= MIN_LVL && lvl <= MAX_LVL) {
             this.lvl = lvl;
         } else {
-            System.out.println("Error: " + lvl +
-                    " is invalid. Level must be between " + MIN_LVL + " and " + MAX_LVL + " inclusive!");
+            System.out.println("Error: " + lvl + " is invalid. Level must be between " +
+                    MIN_LVL + " and " + MAX_LVL + " inclusive!");
         }
     }
 
@@ -181,12 +178,12 @@ class Pokemon {
 
     public void setSpecies(String species) {
         // validate a set of valid Pokemon, PokemonValidationTest
-        if (species.equals("Pikachu") || species.equals("Charmander") || species.equals("Squirtle")
-        || species.equals("Bulbasaur")) {
+        if (species.equals("Pikachu") || species.equals("Charmander") ||
+                species.equals("Squirtle") || species.equals("Bulbasaur")) {
             this.species = species;
         } else {
-            System.out.println("Error: Invalid Pokemon! Must select one of the following Kanto starters: " +
-                    "Pikachu, Charmander, Squirtle, Bulbasaur");
+            System.out.println("Error: Invalid Pokemon! Must select one of the following Kanto starters: "
+                    + "Pikachu, Charmander, Squirtle, Bulbasaur");
         }
     }
 
@@ -205,10 +202,12 @@ class Pokemon {
     public void setMove(String move) {
         this.move = move;
     }
+
     // ENUM usage
     public DamageType getDamage() {
         return damage;
     }
+
     // ENUM usage
     public void setDamage(DamageType damage) {
         this.damage = damage;
@@ -225,7 +224,7 @@ class Pokemon {
     // toString()
     public String toString() {
         return String.format("Pokemon: species=%s, level=%s, rival=%s, " +
-                "move=%s, damage=%s, isDefeated=%s]", getSpecies(), getLvl(),
-                getRival(), getMove(), getDamage(), getDefeated());
+                "move=%s, damage=%s, isDefeated=%s]",
+                getSpecies(), getLvl(), getRival(), getMove(), getDamage(), getDefeated());
     }
 }

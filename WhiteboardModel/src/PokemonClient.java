@@ -18,7 +18,7 @@ class PokemonClient {
 
 
         Pokemon pk2 = new Pokemon(20, "Bulbasaur", "Charmander",
-                    "Vine Whip", DamageType.NOT_VERY_EFFECTIVE, false);
+                "Vine Whip", DamageType.NOT_VERY_EFFECTIVE, false);
         System.out.println("Pokemon 2:\n" + pk2.getSpecies() + " vs " + pk2.getRival());
         System.out.println(pk2.getSpecies() + ": " + pk2.chatter());
         pk2.rivalAttack("Scratch", DamageType.EFFECTIVE);

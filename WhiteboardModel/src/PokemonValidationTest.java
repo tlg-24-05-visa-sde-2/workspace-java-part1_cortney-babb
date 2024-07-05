@@ -2,7 +2,7 @@
 class PokemonValidationTest {
     public static void main(String[] args) {
 
-        // Pokemon level testing
+        // Pokemon level data testing (setLvl() )
         System.out.println("Pokemon Level Validation: \n[");
         Pokemon pkmn = new Pokemon();
 
