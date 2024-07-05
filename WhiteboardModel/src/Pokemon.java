@@ -19,7 +19,7 @@ class Pokemon {
     private String move = "Run Away"; // default move
     private DamageType damage = DamageType.NO_EFFECT; // default damage constraint: ["No effect",
                                          // "Not very effective", "Effective", "Very effective"]
-    private Boolean isDefeated;
+    private boolean isDefeated;
 
     // constructors
     public Pokemon() {
@@ -36,7 +36,7 @@ class Pokemon {
         setMove(move);
     }
 
-    public Pokemon(int lvl, String species, String rival, String move, DamageType damage, Boolean isDefeated) {
+    public Pokemon(int lvl, String species, String rival, String move, DamageType damage, boolean isDefeated) {
         // using this() to delegate to neighboring constructor above for lvl, species and move
         this(lvl, species, rival, move);
         // delegate to setters
@@ -161,7 +161,7 @@ class Pokemon {
             this.lvl = lvl;
         } else {
             System.out.println("Error: " + lvl +
-                    " is invalid. Level must be between" + MIN_LVL + " and " + MAX_LVL + " inclusive!");
+                    " is invalid. Level must be between " + MIN_LVL + " and " + MAX_LVL + " inclusive!");
         }
     }
 
@@ -170,7 +170,7 @@ class Pokemon {
     }
 
     public void setSpecies(String species) {
-        // validate a set of valid Pokemon
+        // validate a set of valid Pokemon, PokemonValidationTest
         if (species.equals("Pikachu") || species.equals("Charmander") || species.equals("Squirtle")
         || species.equals("Bulbasaur")) {
             this.species = species;
@@ -204,11 +204,11 @@ class Pokemon {
         this.damage = damage;
     }
 
-    public Boolean getDefeated() {
+    public boolean getDefeated() {
         return isDefeated;
     }
 
-    public void setDefeated(Boolean defeated) {
+    public void setDefeated(boolean defeated) {
         isDefeated = defeated;
     }
 
