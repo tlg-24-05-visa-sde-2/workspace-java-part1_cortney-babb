@@ -81,8 +81,15 @@ class Movie {
         //TODO: null revenue should come out as null, non-null revenue should be formatted 122,000,229.00
         //HINT: If revenue is null, use %s, else use %,.2f
         //if (revenue == null){ revenue = %s } else { revenue = %,.2f}
-        return String.format("Movie: title=%s, year=%s, revenue=%,.2f, rating=%s, genre=%s",
-                getTitle(), getYear(), getRevenue(), getRating(), getGenre());
+//        String revenueString = this.getRevenue() ? "%,.2f" : "%f";
+
+        if (this.getRevenue() == null) {
+            return String.format("Movie: title=%s, year=%s, revenue=%s, rating=%s, genre=%s",
+                    getTitle(), getYear(), getRevenue(), getRating(), getGenre());
+        } else {
+            return String.format("Movie: title=%s, year=%s, revenue=$%,.2f, rating=%s, genre=%s",
+                    getTitle(), getYear(), getRevenue(), getRating(), getGenre());
+        }
 //        return "Movie: Title=" + getTitle() +
 //                ", Year=" + getYear() +
 //                ", Revenue=" + getRevenue() +
