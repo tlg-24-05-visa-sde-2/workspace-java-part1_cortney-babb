@@ -86,6 +86,8 @@ class Pokemon {
     public void evolve() {
         String msg1 = "Something is happening! " + getSpecies() + " is evolving.\n...\n";
         String msg2 = "\nCongratulations on your new Pokemon!\n";
+        String msg3 = getSpecies() + " is not ready to evolve.\nCurrent level: " +
+                getLvl() + "\nEvolution level: ";
         boolean isEvolving = false;
 
         // assigns an evolutionary level to each Pokemon and outputs executes evolution if it is true
@@ -108,9 +110,17 @@ class Pokemon {
 
         }
         if (!isEvolving) {
-            System.out.println(getSpecies() + " is not ready to evolve.\nCurrent level: " +
-                    getLvl() + "\n");
+            if (getSpecies().equals("Pikachu") && getLvl() < 25) {
+                System.out.println(msg3 + "25");
+            } else if (getSpecies().equals("Squirtle") && getLvl() < 32) {
+                System.out.println(msg3 + "32");
+            } else if (getSpecies().equals("Charmander") && getLvl() < 35) {
+                System.out.println(msg3 + "35");
+            } else if (getSpecies().equals("Bulbasaur") && getLvl() < 30) {
+                System.out.println(msg3 + "30");
+            }
         }
+        System.out.println();
     }
 
     // assigns a sound effect to each Pokemon
@@ -215,7 +225,7 @@ class Pokemon {
     // toString()
     public String toString() {
         return String.format("Pokemon: species=%s, level=%s, rival=%s, " +
-                "move=%s, damage=%s, isDefeated=%s", getSpecies(), getLvl(),
+                "move=%s, damage=%s, isDefeated=%s]", getSpecies(), getLvl(),
                 getRival(), getMove(), getDamage(), getDefeated());
     }
 }
