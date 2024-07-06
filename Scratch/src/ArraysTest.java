@@ -26,7 +26,7 @@ class ArraysTest {
             System.out.printf("=> %s\n", country);
         }
         System.out.println();
-        
+
         for (int i = 0; i < countries.length; i++) {
             System.out.println("I want to visit " + countries[i]);
         }
