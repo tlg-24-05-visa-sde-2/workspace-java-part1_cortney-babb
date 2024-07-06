@@ -14,8 +14,9 @@ class Pokemon {
 
     // properties or attributes w/ data encapsulation
     private int lvl = 5; // default 5
-    private String species; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
-    private String rival; // constraint: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
+    // default with enum: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
+    private PokemonSpecies species = PokemonSpecies.PIKACHU;
+    private PokemonRival rival; // enum: ["Pikachu", "Squirtle", "Bulbasaur", "Charmander"]
     private String move = "Run Away"; // default move
     private DamageType damage = DamageType.NO_EFFECT; // default damage constraint: ["No effect",
     // "Not very effective", "Effective", "Very effective"]
@@ -25,18 +26,19 @@ class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String species) {
+    public Pokemon(PokemonSpecies species) {
         setSpecies(species);
     }
 
-    public Pokemon(int lvl, String species, String rival, String move) {
+    public Pokemon(int lvl, PokemonSpecies species, PokemonRival rival, String move) {
         this(species); // delegates to lvl, species, move constructor above
         setLvl(lvl);
         setRival(rival);
         setMove(move);
     }
 
-    public Pokemon(int lvl, String species, String rival, String move, DamageType damage, boolean isDefeated) {
+    public Pokemon(int lvl, PokemonSpecies species, PokemonRival rival, String move,
+                   DamageType damage, boolean isDefeated) {
         // using this() to delegate to neighboring constructor above for lvl, species and move
         this(lvl, species, rival, move);
         // delegate to setters
@@ -74,7 +76,8 @@ class Pokemon {
         if (getDefeated()) {
             isDefeated = true;
             System.out.println("Enemy " + getRival() + " has been defeated!");
-            System.out.println(getSpecies() + " gained experience and has increased from level " + getLvl() + " to " + (++lvl) + ".");
+            System.out.println(getSpecies() + " gained experience and has increased from level "
+                    + getLvl() + " to " + (++lvl) + ".");
         } else {
             isDefeated = false;
             System.out.println(getSpecies() + " has fainted.");
@@ -84,53 +87,61 @@ class Pokemon {
 
     // data validation: specific response types for evolution method
     public void evolve() {
+        int[] evoLvl = {25, 32, 35, 30};
+        String[] evoSpecies = {"Raichu", "Wartortle", "Charmeleon", "Ivysaur"};
         String msg1 = "Something is happening! " + getSpecies() + " is evolving.\n...\n";
         String msg2 = "\nCongratulations on your new Pokemon!\n";
         String msg3 = getSpecies() + " is not ready to evolve.\nCurrent level: " + getLvl() + "\nEvolution level: ";
         boolean isEvolving = false;
 
         // assigns an evolutionary level to each Pokemon and outputs executes evolution if it is true
-        if (getSpecies().equals("Pikachu") && getLvl() >= 25) {
-            isEvolving = true;
-            System.out.println(msg1 + "Pikachu has evolved into Raichu." + msg2);
-
-        } else if (getSpecies().equals("Squirtle") && getLvl() >= 32) {
-            isEvolving = true;
-            System.out.println(msg1 + "Squirtle has evolved into Wartortle." + msg2);
-
-        } else if (getSpecies().equals("Charmander") && getLvl() >= 35) {
-            isEvolving = true;
-            System.out.println(msg1 + "Charmander has evolved into Charmeleon." + msg2);
-
-        } else if (getSpecies().equals("Bulbasaur") && getLvl() >= 30) {
-            isEvolving = true;
-            System.out.println(msg1 + "Bulbasaur has evolved into Ivysaur." + msg2);
-
-        }
-        if (!isEvolving) {
-            if (getSpecies().equals("Pikachu") && getLvl() < 25) {
-                System.out.println(msg3 + "25");
-            } else if (getSpecies().equals("Squirtle") && getLvl() < 32) {
-                System.out.println(msg3 + "32");
-            } else if (getSpecies().equals("Charmander") && getLvl() < 35) {
-                System.out.println(msg3 + "35");
-            } else if (getSpecies().equals("Bulbasaur") && getLvl() < 30) {
-                System.out.println(msg3 + "30");
+        if (getSpecies().equals(PokemonSpecies.PIKACHU)) {
+            if (getLvl() >= evoLvl[0]){
+                isEvolving = true;
+                System.out.println(msg1 + getSpecies() + " has evolved into " +
+                        evoSpecies[0] + msg2 + ".");
+            } else {
+                System.out.println(msg3 + evoLvl[0]);
+            }
+        } else if (getSpecies().equals(PokemonSpecies.SQUIRTLE)) {
+            if (getLvl() >= evoLvl[1]){
+                isEvolving = true;
+                System.out.println(msg1 + getSpecies() + " has evolved into " +
+                        evoSpecies[1] + msg2 + ".");
+            } else {
+                System.out.println(msg3 + evoLvl[1]);
+            }
+        } else if (getSpecies().equals(PokemonSpecies.CHARMANDER)) {
+            if (getLvl() >= evoLvl[2]){
+                isEvolving = true;
+                System.out.println(msg1 + getSpecies() + " has evolved into " +
+                        evoSpecies[2] + "." + msg2);
+            } else {
+                System.out.println(msg3 + evoLvl[2]);
+            }
+        } else if (getSpecies().equals(PokemonSpecies.BULBASAUR)) {
+            if (getLvl() >= evoLvl[3]){
+                isEvolving = true;
+                System.out.println(msg1 + getSpecies() + " has evolved into " +
+                        evoSpecies[3] + "." + msg2);
+            } else {
+                System.out.println(msg3 + evoLvl[3]);
             }
         }
+
         System.out.println();
     }
 
     // assigns a sound effect to each Pokemon
     public String chatter() {
         String chat = "";
-        if (getSpecies().equals("Pikachu")) {
+        if (getSpecies().equals(PokemonSpecies.PIKACHU)) {
             chat = "~Pika pi!";
-        } else if (getSpecies().equals("Charmander")) {
+        } else if (getSpecies().equals(PokemonSpecies.CHARMANDER)) {
             chat = "~Char!";
-        } else if (getSpecies().equals("Squirtle")) {
+        } else if (getSpecies().equals(PokemonSpecies.SQUIRTLE)) {
             chat = "~Squirtle squirt!";
-        } else if (getSpecies().equals("Bulbasaur")) {
+        } else if (getSpecies().equals(PokemonSpecies.BULBASAUR)) {
             chat = "~Bulba!";
         }
         return chat;
@@ -172,26 +183,27 @@ class Pokemon {
         }
     }
 
-    public String getSpecies() {
+    public PokemonSpecies getSpecies() {
         return species;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(PokemonSpecies species) {
+        this.species = species;
         // validate a set of valid Pokemon, PokemonValidationTest
-        if (species.equals("Pikachu") || species.equals("Charmander") ||
-                species.equals("Squirtle") || species.equals("Bulbasaur")) {
-            this.species = species;
-        } else {
-            System.out.println("Error: Invalid Pokemon! Must select one of the following Kanto starters: "
-                    + "Pikachu, Charmander, Squirtle, Bulbasaur");
-        }
+//        if (species.equals("Pikachu") || species.equals("Charmander") ||
+//                species.equals("Squirtle") || species.equals("Bulbasaur")) {
+//            this.species = species;
+//        } else {
+//            System.out.println("Error: Invalid Pokemon! Must select one of the following Kanto starters: "
+//                    + "Pikachu, Charmander, Squirtle, Bulbasaur");
+//        }
     }
 
-    public String getRival() {
+    public PokemonRival getRival() {
         return rival;
     }
 
-    public void setRival(String rival) {
+    public void setRival(PokemonRival rival) {
         this.rival = rival;
     }
 

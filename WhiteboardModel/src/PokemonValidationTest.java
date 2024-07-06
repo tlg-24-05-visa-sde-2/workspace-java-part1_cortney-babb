@@ -24,28 +24,24 @@ class PokemonValidationTest {
 
         // pokemon species (from setSpecies() in Pokemon.java) and evolution testing (evolve() method)
         Pokemon pkmn1 = new Pokemon();
-        pkmn1.setSpecies("Pikachu");
+        pkmn1.setSpecies(PokemonSpecies.PIKACHU);
         pkmn1.setLvl(25);
         pkmn1.evolve(); // Expected to evolve at level 25
 
-        pkmn1.setSpecies("Squirtle");
+        pkmn1.setSpecies(PokemonSpecies.SQUIRTLE);
         pkmn1.setLvl(30);
         pkmn1.evolve(); // Not ready to evolve, evolves at lvl 32
 
-        pkmn1.setSpecies("Charmander");
-        pkmn1.setRival("Bulbasaur");
+        pkmn1.setSpecies(PokemonSpecies.CHARMANDER);
+        pkmn1.setRival(PokemonRival.BULBASAUR);
         pkmn1.setLvl(34);
         pkmn1.setDefeated(true);
         pkmn1.levelUp(); // Expecting Charmander to level up and qualify to evolve at lvl 35
         pkmn1.evolve();
 
-        pkmn1.setSpecies("Bulbasaur");
+        pkmn1.setSpecies(PokemonSpecies.BULBASAUR);
         pkmn1.setLvl(29);
         pkmn1.evolve(); // Not ready to evolve, evolves at lvl 30
-
-        pkmn1.setSpecies("Mewtwo"); // Expected to return error message as Random isn't part of the selection
-        pkmn1.setLvl(14); // Expected to retain previous species Bulbasaur and reassign its level to 14
-        pkmn1.evolve(); // Should not evolve
 
         System.out.println("]");
     }

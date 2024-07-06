@@ -26,8 +26,8 @@ class PokemonClientArgs {
         }
 
         int lvl = Integer.parseInt(args[0]);
-        String species = args[1];
-        String rival = args[2];
+        PokemonSpecies species = PokemonSpecies.valueOf(args[1].toUpperCase());
+        PokemonRival rival = PokemonRival.valueOf(args[2].toUpperCase());
         String move = args[3];
         DamageType damage = DamageType.valueOf(args[4].toUpperCase());
         Boolean isDefeated = Boolean.parseBoolean(args[5]);
@@ -38,7 +38,7 @@ class PokemonClientArgs {
                 " entries satisfies the required number of arguments.");
         System.out.println("Enjoy your new Pokemon! It will accompany you " +
                 "along your journey throughout Kanto.\nYou are able to engage in " +
-                "battle as well as catch new Pokemon along the way.");
+                "battle as well as catch new Pokemon along the way.\nPikachu: " + pokemon.chatter());
         System.out.println(pokemon);
 
 

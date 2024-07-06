@@ -5,17 +5,18 @@ enum DamageType {
     EFFECTIVE("Effective"),
     SUPER_EFFECTIVE("Super effective");
 
-    private String display;
+    private String damage;
 
     // must be implicitly private
-    DamageType(String display) {
-        this.display = display;
+    DamageType(String damage) {
+        this.damage = damage;
+
     }
-    public String getDisplay() {
-        return display;
+    public String getDamage() {
+        return damage;
     }
 
     public String toString() {
-        return getDisplay();
+        return getDamage();
     }
 }

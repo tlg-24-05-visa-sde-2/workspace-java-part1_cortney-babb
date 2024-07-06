@@ -7,7 +7,7 @@ class PokemonClient {
     public static void main(String[] args) {
 
         //instances & properties
-        Pokemon pk1 = new Pokemon(24, "Pikachu", "Squirtle", "Thundershock",
+        Pokemon pk1 = new Pokemon(24, PokemonSpecies.PIKACHU, PokemonRival.SQUIRTLE, "Thundershock",
                 DamageType.SUPER_EFFECTIVE, true);
         //calling the instance/methods
         System.out.println("Pokemon 1:\n" + pk1.getSpecies() + " vs " + pk1.getRival());
@@ -17,7 +17,7 @@ class PokemonClient {
         pk1.evolve();
 
 
-        Pokemon pk2 = new Pokemon(20, "Bulbasaur", "Charmander",
+        Pokemon pk2 = new Pokemon(20, PokemonSpecies.BULBASAUR, PokemonRival.CHARMANDER,
                 "Vine Whip", DamageType.NOT_VERY_EFFECTIVE, false);
         System.out.println("Pokemon 2:\n" + pk2.getSpecies() + " vs " + pk2.getRival());
         System.out.println(pk2.getSpecies() + ": " + pk2.chatter());
@@ -28,13 +28,26 @@ class PokemonClient {
         pk2.levelUp();
         pk2.evolve();
 
+
         // utilizes constraint with 3 arguments and takes default value for lvl
-        Pokemon pk3 = new Pokemon(12, "Squirtle", "Pikachu", "Bubblebeam");
+        Pokemon pk3 = new Pokemon(12, PokemonSpecies.SQUIRTLE, PokemonRival.PIKACHU, "Bubblebeam");
         System.out.println("Pokemon 3:\n" + pk3.getSpecies() + " vs " + pk3.getRival());
         System.out.println(pk3.getSpecies() + ": " + pk3.chatter());
         pk3.catching(false);
         pk3.rivalAttack("Growl", DamageType.NO_EFFECT);
         pk3.catching(true);
+        System.out.println();
+
+
+        Pokemon pk4 = new Pokemon(34, PokemonSpecies.CHARMANDER, PokemonRival.SQUIRTLE,
+                "Flamethrower", DamageType.NOT_VERY_EFFECTIVE, true);
+        System.out.println("Pokemon 4:\n" + pk4.getSpecies() + " vs " + pk4.getRival());
+        System.out.println(pk4.getSpecies() + ": " + pk4.chatter());
+        pk4.attack();
+        pk4.rivalAttack("Bubblebeam", DamageType.SUPER_EFFECTIVE);
+        pk4.setMove("Fire Punch");
+        pk4.attack();
+        pk4.catching(true);
 
 
         System.out.println("\ntoString() Data:");
@@ -42,5 +55,6 @@ class PokemonClient {
         System.out.println(pk1.toString());
         System.out.println(pk2);
         System.out.println(pk3);
+        System.out.println(pk4);
     }
 }
