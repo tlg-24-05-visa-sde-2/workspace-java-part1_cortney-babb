@@ -1,6 +1,10 @@
-package com.cinema;
+package com.cinema.client;
 
-class MovieClient {
+import com.cinema.Genre;
+import com.cinema.Movie;
+import com.cinema.Rating;
+
+public class MovieClient {
     public static void main(String[] args) {
         Movie mv1 = new Movie("Black Panther");
         mv1.setYear(2018);

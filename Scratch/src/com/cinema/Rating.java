@@ -1,6 +1,6 @@
 package com.cinema;
 
-enum Rating {
+public enum Rating {
     G("G"),
     PG("PG"),
     PG_13("PG-13"),

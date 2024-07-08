@@ -1,6 +1,6 @@
 package com.cinema;
 
-class Movie {
+public class Movie {
     // fields or instance variables
     private String title;
     private Integer year;
