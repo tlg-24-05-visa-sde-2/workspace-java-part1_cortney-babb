@@ -1,3 +1,5 @@
+package com.cinema;
+
 enum Genre {
     // each of these is calling the Genre() ctor below
     ANIME("Anime"),

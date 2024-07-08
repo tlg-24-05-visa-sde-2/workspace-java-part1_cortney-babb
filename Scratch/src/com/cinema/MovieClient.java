@@ -1,3 +1,5 @@
+package com.cinema;
+
 class MovieClient {
     public static void main(String[] args) {
         Movie mv1 = new Movie("Black Panther");

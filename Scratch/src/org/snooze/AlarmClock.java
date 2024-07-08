@@ -1,3 +1,4 @@
+package org.snooze;
 
 /*
  * Application class to model the workings of an AlarmClock.

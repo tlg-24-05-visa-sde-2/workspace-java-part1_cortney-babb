@@ -1,3 +1,5 @@
+package com.cinema;
+
 enum Rating {
     G("G"),
     PG("PG"),

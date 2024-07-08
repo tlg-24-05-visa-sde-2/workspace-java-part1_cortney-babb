@@ -1,4 +1,4 @@
-/*
+package org.snooze;/*
  * Client-side "main-class" - the class definition with main()
  * That is the only thing in here
  * We will create a few AlarmClock objects and give them a basic test drive
