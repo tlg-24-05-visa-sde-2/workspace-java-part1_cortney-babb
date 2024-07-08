@@ -1,5 +1,11 @@
+package com.gamefreak.test;
+
+import com.gamefreak.Pokemon;
+import com.gamefreak.PokemonRival;
+import com.gamefreak.PokemonSpecies;
+
 // Validates Pokemon is assigned an appropriate level in setLvl() method
-class PokemonValidationTest {
+public class PokemonValidationTest {
     public static void main(String[] args) {
 
         // Pokemon level data testing (setLvl() )

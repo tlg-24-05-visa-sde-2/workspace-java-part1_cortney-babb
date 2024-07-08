@@ -1,9 +1,14 @@
-import java.time.*;
+package com.gamefreak.client;
+
+import com.gamefreak.DamageType;
+import com.gamefreak.Pokemon;
+import com.gamefreak.PokemonRival;
+import com.gamefreak.PokemonSpecies;
 
 /*
  * Main class for application
  */
-class PokemonClient {
+public class PokemonClient {
     public static void main(String[] args) {
 
         //instances & properties

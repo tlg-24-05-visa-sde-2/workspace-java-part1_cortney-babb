@@ -1,4 +1,5 @@
-// date/time usage + formatting
+package com.gamefreak;// date/time usage + formatting
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -6,7 +7,7 @@ import java.time.format.DateTimeFormatter;
  * This Pokemon application allows the user to partake in a battle with their
  * chosen species from only the Kanto starters.
  */
-class Pokemon {
+public class Pokemon {
     // static "shared" public fields not to be changed, min and max valid lvl
     // also class constants
     public static final int MIN_LVL = 1;
@@ -96,7 +97,7 @@ class Pokemon {
 
         // assigns an evolutionary level to each Pokemon and outputs executes evolution if it is true
         if (getSpecies().equals(PokemonSpecies.PIKACHU)) {
-            if (getLvl() >= evoLvl[0]){
+            if (getLvl() >= evoLvl[0]) {
                 isEvolving = true;
                 System.out.println(msg1 + getSpecies() + " has evolved into " +
                         evoSpecies[0] + msg2 + ".");
@@ -104,7 +105,7 @@ class Pokemon {
                 System.out.println(msg3 + evoLvl[0]);
             }
         } else if (getSpecies().equals(PokemonSpecies.SQUIRTLE)) {
-            if (getLvl() >= evoLvl[1]){
+            if (getLvl() >= evoLvl[1]) {
                 isEvolving = true;
                 System.out.println(msg1 + getSpecies() + " has evolved into " +
                         evoSpecies[1] + msg2 + ".");
@@ -112,7 +113,7 @@ class Pokemon {
                 System.out.println(msg3 + evoLvl[1]);
             }
         } else if (getSpecies().equals(PokemonSpecies.CHARMANDER)) {
-            if (getLvl() >= evoLvl[2]){
+            if (getLvl() >= evoLvl[2]) {
                 isEvolving = true;
                 System.out.println(msg1 + getSpecies() + " has evolved into " +
                         evoSpecies[2] + "." + msg2);
@@ -120,7 +121,7 @@ class Pokemon {
                 System.out.println(msg3 + evoLvl[2]);
             }
         } else if (getSpecies().equals(PokemonSpecies.BULBASAUR)) {
-            if (getLvl() >= evoLvl[3]){
+            if (getLvl() >= evoLvl[3]) {
                 isEvolving = true;
                 System.out.println(msg1 + getSpecies() + " has evolved into " +
                         evoSpecies[3] + "." + msg2);
@@ -167,7 +168,6 @@ class Pokemon {
         return isCaught;
     }
 
-
     // data encapsulation: getters and setters
     public int getLvl() {
         return lvl;
@@ -189,14 +189,6 @@ class Pokemon {
 
     public void setSpecies(PokemonSpecies species) {
         this.species = species;
-        // validate a set of valid Pokemon, PokemonValidationTest
-//        if (species.equals("Pikachu") || species.equals("Charmander") ||
-//                species.equals("Squirtle") || species.equals("Bulbasaur")) {
-//            this.species = species;
-//        } else {
-//            System.out.println("Error: Invalid Pokemon! Must select one of the following Kanto starters: "
-//                    + "Pikachu, Charmander, Squirtle, Bulbasaur");
-//        }
     }
 
     public PokemonRival getRival() {
@@ -236,7 +228,7 @@ class Pokemon {
     // toString()
     public String toString() {
         return String.format("Pokemon: species=%s, level=%s, rival=%s, " +
-                "move=%s, damage=%s, isDefeated=%s]",
+                        "move=%s, damage=%s, isDefeated=%s]",
                 getSpecies(), getLvl(), getRival(), getMove(), getDamage(), getDefeated());
     }
 }

@@ -1,4 +1,6 @@
-enum PokemonRival {
+package com.gamefreak;
+
+public enum PokemonRival {
     PIKACHU("Pikachu"),
     CHARMANDER("Charmander"),
     SQUIRTLE("Squirtle"),

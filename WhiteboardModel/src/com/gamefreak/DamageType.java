@@ -1,5 +1,7 @@
+package com.gamefreak;
+
 // enum list of values
-enum DamageType {
+public enum DamageType {
     NO_EFFECT("No effect"),
     NOT_VERY_EFFECTIVE("Not very effective"),
     EFFECTIVE("Effective"),

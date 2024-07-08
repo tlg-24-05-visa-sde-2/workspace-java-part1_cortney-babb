@@ -1,6 +1,13 @@
+package com.gamefreak.client;
+
+import com.gamefreak.DamageType;
+import com.gamefreak.Pokemon;
+import com.gamefreak.PokemonRival;
+import com.gamefreak.PokemonSpecies;
+
 import java.util.Arrays;
 
-class PokemonClientArgs {
+public class PokemonClientArgs {
     public static void main(String[] args) {
         // checking for 6 arguments (required)
         if (args.length < 6) {
@@ -11,13 +18,13 @@ class PokemonClientArgs {
             String disclaimer = "Level must be in range of: " +
                     Pokemon.MIN_LVL + " and " + Pokemon.MAX_LVL;
             String disclaimer2 = "Species must be a valid Kanto starter: " +
-                    "Pikachu, Squirtle, Charmander, Bulbasaur" +
+                    "Pikachu, Squirtle, Charmander, Bulbasaur\n" +
                     "Rival must be a valid Kanto starter: " +
                     "Pikachu, Squirtle, Charmander, Bulbasaur";
             String disclaimer3 = "Valid damage effects: " +
-                    Arrays.toString(DamageType.values()) + "\n";
-            String disclaimer4 = "Valid response type - Did you defeat your rival?" +
-                    "True / False";
+                    Arrays.toString(DamageType.values());
+            String disclaimer4 = "Valid response type - Did you defeat your rival? " +
+                    "True or False";
 
 
             System.out.println(requirements + "\n" + ex + "\n" + disclaimer +

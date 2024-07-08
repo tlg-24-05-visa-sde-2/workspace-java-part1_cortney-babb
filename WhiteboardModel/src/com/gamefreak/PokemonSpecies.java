@@ -1,4 +1,6 @@
-enum PokemonSpecies {
+package com.gamefreak;
+
+public enum PokemonSpecies {
     PIKACHU("Pikachu"),
     CHARMANDER("Charmander"),
     SQUIRTLE("Squirtle"),
