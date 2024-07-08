@@ -27,10 +27,12 @@ class TelevisionClientArgs {
             String example = "Example: java TelevisionClientArgs Samsung 32 PLASMA";
             String note = "Note: supported displays are + " + Arrays.toString(DisplayType.values());
             String note2 = "Volume must be from " + Television.MIN_VOLUME + " to " + Television.MAX_VOLUME;
+            String note3 = "Supported brands: " + Arrays.toString(Television.VALID_BRANDS);
             System.out.println(usage);
             System.out.println(example);
             System.out.println(note);
             System.out.println(note2);
+            System.out.println(note3);
             return;  // early return from main(), application exits
         }
 
