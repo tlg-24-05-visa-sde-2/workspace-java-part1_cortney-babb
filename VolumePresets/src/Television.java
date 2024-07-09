@@ -150,7 +150,7 @@ public class Television {
     public DisplayType getDisplay() {
         return display;
     }
-
+    
     public void setDisplay(DisplayType display) {
         this.display = display;
     }
