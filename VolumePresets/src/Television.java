@@ -1,11 +1,15 @@
+import java.util.Arrays;
+
 /*
  * Application or system class model the workings of a television
  * it has properties/attributes and business methods but no main() method
  */
-class Television {
+public class Television {
     // class-level "static" variables - these live in the "shared area" above the instances, ALL_CAP naming
     public static final int MIN_VOLUME = 0;
     public static final int MAX_VOLUME = 100;
+    // disclaimer: proper way would be to use a brand enum
+    public static final String[] VALID_BRANDS = { "Samsung", "LG", "Sony", "Toshiba" };
     private static int instanceCount = 0;
 
     public static int getInstanceCount() {
@@ -13,6 +17,20 @@ class Television {
         // ^^^ cannot be called here bc static methods can't directly call instance methods
         // w/o having a reference to a specific instance (object)
         return instanceCount;
+    }
+    // all static methods are called as Television.methodName()
+    // Television.isValidBrand()
+    public static boolean isValidBrand(String brand) {
+        boolean isValid = false;
+        // iterates through each brand in array and checks if incoming brand
+        // matches the array and will assign it, and then breaks out of loop
+        for (String validBrand : VALID_BRANDS) {
+            if (validBrand.equals(brand)) { // a match
+                isValid = true;
+                break;
+            }
+        }
+        return isValid;
     }
     // ****************************************************************************
 
@@ -45,11 +63,11 @@ class Television {
 
     // methods
 
-   public void turnOn() {
+    public void turnOn() {
         // call private method for this task
-         boolean isConnected = verifyInternetConnection();
-         // System.out.println(verifyInternetConnection());
-         System.out.println();
+        boolean isConnected = verifyInternetConnection();
+        // System.out.println(verifyInternetConnection());
+        System.out.println();
 
 
         System.out.println("Turning on your " + getBrand() + " television to volume " + getVolume());
@@ -84,13 +102,28 @@ class Television {
     }
 
     public void setBrand(String brand) {
-        // validate brand, samsung, lg, sony, toshiba only valid brands
-        if (brand.equals("Samsung") || brand.equals("LG") || brand.equals("Sony") || brand.equals("Toshiba") ) {
+        if (isValidBrand(brand)) {
             this.brand = brand;
         } else {
-            System.out.println("Error: Invalid brand. Your selection of brands must be one of the following:" +
-                    "Samsung, LG, Sony, Toshiba");
+            System.out.println(brand + " is not a valid brand. " +
+                    "The valid brands are " + Arrays.toString(VALID_BRANDS));
         }
+//        // validate brand, samsung, lg, sony, toshiba only valid brands
+//        boolean isValid = false;
+//        // iterates through each brand in array and checks if incoming brand
+//        // matches the array and will assign it, and then breaks out of loop
+//        for (String validBrand : VALID_BRANDS) {
+//            if (validBrand.equals(brand)) { // a match
+//                isValid = true;
+//                this.brand = brand;
+//                break;
+//            }
+//        }
+//        // after loop, check if its not valid and output error message
+//        if (!isValid) {
+//            System.out.println(brand + " is not a valid brand. " +
+//                    "The valid brands are " + Arrays.toString(VALID_BRANDS));
+//        }
     }
 
     public int getVolume() {
@@ -108,6 +141,11 @@ class Television {
 //            System.out.println("Error: Invalid number! Volume must be between " + MIN_VOLUME + " and " + MAX_VOLUME);
         }
     }
+    // creating overloaded volume this time taking in a parameter using enum values
+    public void setVolume(VolumeLevel volumeLevel) {
+        this.volume = volumeLevel.getVolLevel(); // assigns enum value to volume
+        isMuted = (volumeLevel == VolumeLevel.OFF); // isMuted and enum value OFF = 0
+    }
 
     public DisplayType getDisplay() {
         return display;
@@ -122,7 +160,7 @@ class Television {
     }
 
     private boolean verifyInternetConnection() {
-       return true; // fake implementation
+        return true; // fake implementation
     }
 
     //toString()
