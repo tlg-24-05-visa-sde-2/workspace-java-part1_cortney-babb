@@ -1,13 +1,17 @@
 package edu.math;
 
+import edu.math.Calculator.*; // ok to use * for static imports
+
+import static edu.math.Calculator.*;
+
 class CalculatorClient {
 
     public static void main(String[] args) {
-
-        double sum = Calculator.add(15,5); // implicit upcast, passing ints where doubles are expected
+        // you can remove Calculator. when importing edu.math.Calculator.*
+        double sum = add(15,5); // implicit upcast, passing ints where doubles are expected
         System.out.println("The sum is: " + sum);
 
-        double sum2 = Calculator.subtract(60.3, 5.2); // here we pass doubles
+        double sum2 = subtract(60.3, 5.2); // here we pass doubles
         System.out.println("The difference is: " + sum2);
 
         double sum3 = Calculator.multiply(4, 4);
