@@ -10,14 +10,16 @@ package com.entertainment.client;
 
 import com.entertainment.DisplayType;
 import com.entertainment.Television;
+import com.entertainment.Tuner;
 
 class TelevisionClient {
   
     public static void main(String[] args) {
         Television tv = new Television("Samsung", 65, DisplayType.LED);
         System.out.println(tv);
-        
-        // TODO: change the channel
+
+        // change the channel
+        tv.changeChannel("Cartoon Network");
         
         System.out.println(tv);
     }
