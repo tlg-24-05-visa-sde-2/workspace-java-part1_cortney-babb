@@ -8,10 +8,7 @@
 
 package com.hr.personnel.client;
 
-import com.hr.personnel.Department;
-import com.hr.personnel.Employee;
-import com.hr.personnel.HourlyEmployee;
-import com.hr.personnel.SalariedEmployee;
+import com.hr.personnel.*;
 
 import java.time.LocalDate;
 
@@ -31,9 +28,10 @@ class HRClient {
         dept.addEmployee(new SalariedEmployee("Julie", LocalDate.of(2000, 2, 2), 1750));
 
         // lab 8.2 create instances of each employee
-        dept.addEmployee(new SalariedEmployee("Cortney", LocalDate.of(2024, 5, 8), 2500));
+        dept.addEmployee(new SalariedEmployee("Malachi", LocalDate.of(2024, 5, 8), 2500));
         dept.addEmployee(new HourlyEmployee("Drake", LocalDate.of(2022, 1, 1),
                         35.2, 60));
+        dept.addEmployee(new Executive("Cortney", LocalDate.of(2023, 10, 12), 5000));
 
         // list its Employees
         System.out.println("\nList employees:");

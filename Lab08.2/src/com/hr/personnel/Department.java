@@ -77,7 +77,7 @@ public class Department {
                 // SalariedEmployee semp = (SalariedEmployee) employees[i];
                 // semp.takeVacation();
 
-                //auto downcast using salariedemployee semo in if ()
+                //auto downcast using salariedemployee semp in if ()
                 semp.takeVacation();
 
                 // this is downcast and method call in one line
