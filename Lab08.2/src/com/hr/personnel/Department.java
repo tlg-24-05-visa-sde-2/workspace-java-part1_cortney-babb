@@ -26,7 +26,8 @@ public class Department {
     // fields
     private String name;
     private String location;
-    private Employee[] employees = new Employee[100];
+    // 1-to-many HAS-A relationship
+    private Employee[] employees = new Employee[100]; // initially filled with nulls
     private int currentIndex = 0;  // for dealing with the array
 
     // constructors
