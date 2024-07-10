@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class SalariedEmployee extends Employee {
 
     private double salary;
-
+    //constructors
     public SalariedEmployee() {
     }
 
@@ -19,6 +19,15 @@ public class SalariedEmployee extends Employee {
         //this(name, hireDate);
         setSalary(salary);
     }
+    // action methods
+    @Override
+    public void pay() {
+        System.out.println(getName() + " is paid salary " + getSalary());
+    }
+
+    public void takeVacation() {
+        System.out.println(getName() + " is on vacation.");
+    }
 
     // getters and setters
     public double getSalary() {
@@ -30,9 +39,9 @@ public class SalariedEmployee extends Employee {
     }
 
     // toString()
+    @Override
     public String toString() {
-        return "Salaried Employee Name: " + getName() +
-                ", Hire Date: " + getHireDate() +
-                ", Salary: " + getSalary();
+        return super.toString() +
+                ", salary: " + getSalary();
     }
 }

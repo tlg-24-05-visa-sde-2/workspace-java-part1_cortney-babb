@@ -6,7 +6,7 @@ public class HourlyEmployee extends Employee {
 
     private double rate;
     private double hours;
-
+    //constructors
     public HourlyEmployee() {
     }
 
@@ -18,6 +18,13 @@ public class HourlyEmployee extends Employee {
         this(name, hireDate);
         setRate(rate);
         setHours(hours);
+    }
+
+    // action methods
+    @Override
+    public void pay() {
+        double payment = getRate() * getHours();
+        System.out.println(getName() + " is paid hourly " +  payment);
     }
 
     // getters and setters
@@ -38,10 +45,10 @@ public class HourlyEmployee extends Employee {
     }
 
     // toString()
+    @Override
     public String toString() {
-        return "Hourly Employee Name: " + getName() +
-                ", Hire Date: " + getHireDate() +
-                ", Rate: " + getRate() +
-                ", Hours: " + getHours();
+        return super.toString() +
+                ", rate: " + getRate() +
+                ", hours: " + getHours();
     }
 }

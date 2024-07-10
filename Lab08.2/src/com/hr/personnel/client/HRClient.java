@@ -26,11 +26,12 @@ class HRClient {
         System.out.println(dept);
 
         // add Employees to it
-        dept.addEmployee(new Employee("Jason", LocalDate.of(1990, 8, 24)));
-        dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2)));
+        dept.addEmployee(new HourlyEmployee("Jason", LocalDate.of(1990, 8, 24),
+                        15.45, 40));
+        dept.addEmployee(new SalariedEmployee("Julie", LocalDate.of(2000, 2, 2), 1750));
 
         // lab 8.2 create instances of each employee
-        dept.addEmployee(new SalariedEmployee("Cortney", LocalDate.of(2024, 5, 8), 88000));
+        dept.addEmployee(new SalariedEmployee("Cortney", LocalDate.of(2024, 5, 8), 2500));
         dept.addEmployee(new HourlyEmployee("Drake", LocalDate.of(2022, 1, 1),
                         35.2, 60));
 
@@ -41,5 +42,13 @@ class HRClient {
         // make its Employees work
         System.out.println("\nMake employees work:");
         dept.workEmployees();
+
+        // pay Employees
+        System.out.println("\nPay employees:");
+        dept.payEmployees();
+
+        // only salaried Employees take vacations (yikes)
+        System.out.println("\nHoliday break:");
+        dept.holidayBreak();
     }
 }
