@@ -31,7 +31,7 @@ class HRClient {
         dept.addEmployee(new SalariedEmployee("Malachi", LocalDate.of(2024, 5, 8), 2500));
         dept.addEmployee(new HourlyEmployee("Drake", LocalDate.of(2022, 1, 1),
                         35.2, 60));
-        dept.addEmployee(new Executive("Cortney", LocalDate.of(2023, 10, 12), 5000));
+        dept.addEmployee(new Executive("Cortney", LocalDate.of(2023, 10, 12), 10_000));
 
         // list its Employees
         System.out.println("\nList employees:");
