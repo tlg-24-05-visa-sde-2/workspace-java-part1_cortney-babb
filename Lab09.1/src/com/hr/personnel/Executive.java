@@ -17,6 +17,12 @@ public class Executive extends SalariedEmployee {
         super(name, hireDate, salary);
     }
 
+    // i opt in to provide my own way vs default way of doing it
+    @Override // interface TaxPayer as a default method
+    public void fileReturn() {
+        System.out.println("Return filed electronically.");
+    }
+
     // action methods
     @Override
     public void work() {
