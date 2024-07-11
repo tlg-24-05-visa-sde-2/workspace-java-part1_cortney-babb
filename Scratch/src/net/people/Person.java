@@ -37,6 +37,7 @@ class Person {
     }
 
     public String toString() {
-        return String.format("Name: name=%s, birthDate=%s", name(), birthDate());
+        return String.format("%s: name=%s, birthDate=%s",
+                            getClass().getSimpleName(), name(), birthDate());
     }
 }
