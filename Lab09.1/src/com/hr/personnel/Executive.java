@@ -5,6 +5,7 @@ import gov.irs.TaxPayer;
 import java.time.LocalDate;
 
 public class Executive extends SalariedEmployee {
+
     // constructors
     public Executive() {
     }
@@ -27,5 +28,11 @@ public class Executive extends SalariedEmployee {
     @Override
     public void work() {
         System.out.println(getName() + " is enjoying a nice round of golf.");
+    }
+
+    // getters
+    @Override
+    public double getStandardDeduction() {
+        return 0.5 * getSalary();
     }
 }

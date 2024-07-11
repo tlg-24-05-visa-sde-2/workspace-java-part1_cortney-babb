@@ -14,7 +14,9 @@ import gov.irs.TaxPayer;
  * Corporate entity - also pays taxes.
  */
 public class Corporation implements TaxPayer {
+    public static final double STAN_DEDUCT = 1_000_000.0;
     private String name;
+
 
     public Corporation(String name) {
         setName(name);
@@ -36,5 +38,10 @@ public class Corporation implements TaxPayer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public double getStandardDeduction() {
+        return STAN_DEDUCT;
     }
 }
