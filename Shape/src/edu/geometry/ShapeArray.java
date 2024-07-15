@@ -26,13 +26,13 @@ public class ShapeArray {
     }
 
     // returns current index if it is within actively filled array bounds
-    public Shape shapeIndex(int index) {
-        if (index >= 0 && index < currentIndex) {
-            return shapes[index];
-        } else {
-            return null;
-        }
-    }
+//    public Shape shapeIndex(int i) {
+//        if (i >= 0 && i < currentIndex) {
+//            return shapes[i];
+//        } else {
+//            return null;
+//        }
+//    }
 
     // calculates the total area from each index
     public double getTotalArea() {
