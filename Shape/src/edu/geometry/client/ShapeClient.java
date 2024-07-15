@@ -21,9 +21,9 @@ class ShapeClient {
 
         shapeArray.listShapes();
 
+
         System.out.println();
         System.out.printf("Total Area of Shapes: %.2f" , shapeArray.getTotalArea());
 
     }
-
 }

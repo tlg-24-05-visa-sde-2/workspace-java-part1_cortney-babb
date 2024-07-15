@@ -4,7 +4,6 @@ public class Triangle implements Shape {
     // private fields
     private double side1;
     private double side2;
-//    private double side3;
     private double angle;
 
     // constructors
@@ -15,43 +14,37 @@ public class Triangle implements Shape {
     public Triangle(double side1, double side2, double angle) {
         this.side1 = side1;
         this.side2 = side2;
-        this.angle = Math.toRadians(angle); // converts number to radians
+        this.angle = angle;
     }
-
-    // SSS
-//    public Triangle(double side1, double side2, double side3) {
-//        this.side1 = side1;
-//        this.side2 = side2;
-//        this.side3 = side3;
-//    }
 
     // action method from interface Shape, SAS (side angle side)
     @Override
     public double getArea() {
-        double area = 0.5 * side1 * side2 * Math.sin(angle);
+        double a = Math.toRadians(angle); // converts number to radians
+        double area = 0.5 * side1 * side2 * Math.sin(a);
         return area;
     }
 
-    // side3= side1 * side1 + side2 * side2 -2 * side1 * side2 * cos(angle)
+    // Perimeter: side3= side1 * side1 + side2 * side2 -2 * side1 * side2 * cos(angle)
     // perimeter = side1 + side2 + side3
     @Override
     public double getPerimeter() {
+        double a = Math.toRadians(angle);
         double side3Math = side1 * side1 + side2 * side2;
         double side3 = Math.sqrt(side3Math - 2 *
-                        side1 * side2 * Math.cos(angle));
+                        side1 * side2 * Math.cos(a));
         double perimeter = side1 + side2 + side3;
 
         return perimeter;
     }
 
-
-    // SSS: area = 0.25 × √( (a + b + c) × (-a + b + c) × (a - b + c) × (a + b - c) )
-//    public double areaSss() {
-//        double sssArea = 0.25 * Math.sqrt(side1 + side2 + side3) *
-//                (-(side1) + side2 + side3) * (side1 - side2 + side3) *
-//                (side1 + side2 - side3);
-//        return sssArea;
-//    }
+    // SSS: area = SquareRoot of [ s(s−side1)(s−side2)(s−side3) ]
+    public double areaSss() {
+        double a = Math.toRadians(angle);
+        double s = (side1 + side2 + angle) / 2;
+        double sssAreaCalc = Math.sqrt(s * (s - side1) * (s - side2) * (s - a));
+        return sssAreaCalc;
+    }
 
     // immutable: getters (no setters)
     public double getSide1() {
@@ -61,10 +54,6 @@ public class Triangle implements Shape {
     public double getSide2() {
         return side2;
     }
-
-//    public double getSide3() {
-//        return side3;
-//    }
 
     public double getAngle() {
         return angle;
