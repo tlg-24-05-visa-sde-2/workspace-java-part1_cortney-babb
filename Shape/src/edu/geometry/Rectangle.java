@@ -17,13 +17,13 @@ public class Rectangle implements Shape {
     // action method from interface Shape
     @Override
     public double getArea() {
-        double area = width * height;
+        double area = getWidth() * getHeight();
         return area;
     }
 
     @Override
     public double getPerimeter() {
-        double perimeter = 2 * (width + height);
+        double perimeter = 2 * (getWidth() + getHeight());
         return perimeter;
     }
 
@@ -37,8 +37,8 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + ": width=" + width + ", height=" +
-                         height + ", area=" + getArea() + ", perimeter=" + getPerimeter();
+        return getClass().getSimpleName() + ": width=" + getWidth() + ", height=" +
+                         getHeight() + ", area=" + getArea() + ", perimeter=" + getPerimeter();
     }
 
 }

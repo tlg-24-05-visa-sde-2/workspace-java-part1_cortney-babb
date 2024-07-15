@@ -20,8 +20,8 @@ public class Triangle implements Shape {
     // action method from interface Shape, SAS (side angle side)
     @Override
     public double getArea() {
-        double a = Math.toRadians(angle); // converts number to radians
-        double area = 0.5 * side1 * side2 * Math.sin(a);
+        double a = Math.toRadians(getAngle()); // converts number to radians
+        double area = 0.5 * getSide1() * getSide2() * Math.sin(a);
         return area;
     }
 
@@ -29,20 +29,20 @@ public class Triangle implements Shape {
     // perimeter = side1 + side2 + side3
     @Override
     public double getPerimeter() {
-        double a = Math.toRadians(angle);
-        double side3Math = side1 * side1 + side2 * side2;
+        double a = Math.toRadians(getAngle());
+        double side3Math = getSide1() * getSide1() + getSide2() * getSide2();
         double side3 = Math.sqrt(side3Math - 2 *
-                        side1 * side2 * Math.cos(a));
-        double perimeter = side1 + side2 + side3;
+                        getSide1() * getSide2() * Math.cos(a));
+        double perimeter = getSide1() + getSide2() + side3;
 
         return perimeter;
     }
 
     // SSS: area = SquareRoot of [ s(s−side1)(s−side2)(s−side3) ]
     public double areaSss() {
-        double a = Math.toRadians(angle);
-        double s = (side1 + side2 + angle) / 2;
-        double sssAreaCalc = Math.sqrt(s * (s - side1) * (s - side2) * (s - a));
+        double a = Math.toRadians(getAngle());
+        double s = (getSide1() + getSide2() + getArea()) / 2;
+        double sssAreaCalc = Math.sqrt(s * (s - getSide1()) * (s - getSide2()) * (s - a));
         return sssAreaCalc;
     }
 
@@ -61,8 +61,8 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " side1=" + side1 +
-                ", side2=" + side2 + ", angle=" + angle +
+        return getClass().getSimpleName() + " side1=" + getSide1() +
+                ", side2=" + getSide2() + ", angle=" + getAngle() +
                 " area=" + getArea() + ", perimeter=" + getPerimeter();
     }
 }

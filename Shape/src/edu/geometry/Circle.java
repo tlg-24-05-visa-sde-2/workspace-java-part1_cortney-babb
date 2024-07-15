@@ -15,13 +15,13 @@ public class Circle implements Shape {
     // action methods
     @Override // method from interface Shape
     public double getArea() {
-        double area = Math.PI * radius * radius;
+        double area = Math.PI * getRadius() * getRadius();
         return area; // circle's area = pi (Math.PI) * radius * radius
     }
 
     @Override
     public double getPerimeter() {
-        double perimeter = 2 * Math.PI * radius;
+        double perimeter = 2 * Math.PI * getRadius();
         return perimeter;
     }
 
@@ -31,7 +31,7 @@ public class Circle implements Shape {
     }
 
     public String toString() {
-        return getClass().getSimpleName() + ": radius=" + radius +
+        return getClass().getSimpleName() + ": radius=" + getRadius() +
                 ", area=" + getArea() + ", perimeter=" + getPerimeter();
     }
 }
