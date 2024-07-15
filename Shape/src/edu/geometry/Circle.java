@@ -19,12 +19,19 @@ public class Circle implements Shape {
         return area; // circle's area = pi (Math.PI) * radius * radius
     }
 
+    @Override
+    public double getPerimeter() {
+        double perimeter = 2 * Math.PI * radius;
+        return perimeter;
+    }
+
     // immutable: getters (no setters)
     public double getRadius() {
         return radius;
     }
 
     public String toString() {
-        return getClass().getSimpleName() + ": radius=" + radius + ", area=" + getArea();
+        return getClass().getSimpleName() + ": radius=" + radius +
+                ", area=" + getArea() + ", perimeter=" + getPerimeter();
     }
 }

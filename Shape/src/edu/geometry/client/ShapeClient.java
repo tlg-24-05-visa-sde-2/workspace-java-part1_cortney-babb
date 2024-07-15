@@ -1,9 +1,6 @@
 package edu.geometry.client;
 
-import edu.geometry.Circle;
-import edu.geometry.Rectangle;
-import edu.geometry.Shape;
-import edu.geometry.ShapeArray;
+import edu.geometry.*;
 
 
 class ShapeClient {
@@ -17,13 +14,15 @@ class ShapeClient {
         shapeArray.addShape(new Circle(6.5));
         shapeArray.addShape(new Rectangle(12, 2));
         shapeArray.addShape(new Rectangle(24, 10.2));
+        shapeArray.addShape(new Triangle(10, 13, 20));
+        shapeArray.addShape(new Triangle(26, 18, 50));
 
         System.out.println();
 
         shapeArray.listShapes();
 
         System.out.println();
-        System.out.println("Total Area of Shapes: " + shapeArray.getTotalArea());
+        System.out.printf("Total Area of Shapes: %.2f" , shapeArray.getTotalArea());
 
     }
 

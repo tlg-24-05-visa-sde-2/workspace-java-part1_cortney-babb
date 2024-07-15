@@ -21,6 +21,12 @@ public class Rectangle implements Shape {
         return area;
     }
 
+    @Override
+    public double getPerimeter() {
+        double perimeter = 2 * (width + height);
+        return perimeter;
+    }
+
     // immutable: getters (no setters)
     public double getWidth() {
         return width;
@@ -29,9 +35,10 @@ public class Rectangle implements Shape {
         return height;
     }
 
+    @Override
     public String toString() {
         return getClass().getSimpleName() + ": width=" + width + ", height=" +
-                         height + ", area=" + getArea();
+                         height + ", area=" + getArea() + ", perimeter=" + getPerimeter();
     }
 
 }
