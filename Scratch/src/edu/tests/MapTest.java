@@ -38,7 +38,7 @@ class MapTest {
             }
         }
         System.out.println();
-        
+
     }
 
     private static void dump(Map<String, Double> gpa) {

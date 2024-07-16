@@ -10,13 +10,14 @@ package com.javatunes.catalog;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
 public class InMemoryCatalog implements Catalog {
 
-    private List<MusicItem> catalogData = new ArrayList<>(List.of(
+    private final List<MusicItem> catalogData = new ArrayList<>(List.of(
                    /* id    title                        artist                       releaseDate  price  musicCategory */
         new MusicItem(1L,  "Diva",                      "Annie Lennox",              "1992-01-04", 13.99, MusicCategory.POP),
         new MusicItem(2L,  "Dream of the Blue Turtles", "Sting",                     "1985-02-05", 14.99, MusicCategory.POP),
@@ -38,6 +39,65 @@ public class InMemoryCatalog implements Catalog {
         new MusicItem(18L, "Escape",                    "Journey",                   "1981-02-25", 11.97, MusicCategory.CLASSIC_ROCK))
     );
 
+    /**
+     * Returns the item with the given id, or null if not found.
+     */
+    @Override
+    public MusicItem findById(Long id) { // pretend this comes in as 6
+        MusicItem item = null;
+
+        for (MusicItem currItem : catalogData) {
+            if (currItem.getId().equals(id)) {
+                item = currItem;
+                break;
+            }
+        }
+        return item;
+    }
+
+    /**
+     * Returns a collection of items that match the supplied keyword.
+     * This is basically a search method.
+     * A match is defined as any item whose title or artist contains the keyword.
+     * Searches are to be case insensitive.
+     * A no-matches result should return an empty collection (not null).
+     */
+    @Override
+    public Collection<MusicItem> findByKeyword(String keyword) {
+        return List.of();
+    }
+
+    /**
+     * Returns a collection of items that are of the supplied genre (category).
+     */
+    @Override
+    public Collection<MusicItem> findByCategory(MusicCategory category) { // category pop
+        Collection<MusicItem> result = new ArrayList<>();
+
+        for (MusicItem item : catalogData) {
+            if (item.getMusicCategory().equals(category)) {
+                result.add(item);
+            }
+         }
+        return result;
+    }
+
+    /**
+     * Size of the catalog.
+     */
+    @Override
+    public int size() {
+        return catalogData.size();
+    }
+
+    /**
+     * Read-only view of the entire catalog.
+     * See java.util.Collections class (an all-static utility class) for help here.
+     */
+    @Override
+    public Collection<MusicItem> getAll() {
+        return Collections.unmodifiableCollection(catalogData);
+    }
 
     /**
      * After you've satisfied your contractual obligations above, do these additional tasks.
@@ -65,12 +125,31 @@ public class InMemoryCatalog implements Catalog {
      * TASK: find all MusicItems where title is same as artist.
      * For example, Madonna's first album is simply titled, "Madonna."
      */
+    public Collection<MusicItem> findSelfTitled() {
+        Collection<MusicItem> result = new ArrayList<>();
 
+        for (MusicItem item : catalogData) {
+            if (item.getTitle().equals(item.getArtist())) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
 
     /**
      * TASK: find all "rock" items whose price is less than or equal to the specified price.
      */
+    public Collection<MusicItem> findRockLessThan(double price) {
+        Collection<MusicItem> result = new ArrayList<>();
 
+        for(MusicItem item : catalogData) {
+            if (item.getPrice() <= price && (item.getMusicCategory().equals(MusicCategory.ROCK) ||
+                    item.getMusicCategory().equals(MusicCategory.CLASSIC_ROCK))) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
 
     /**
      * TASK: how many items of the specified genre (MusicCategory) do we sell?
@@ -85,11 +164,17 @@ public class InMemoryCatalog implements Catalog {
     /**
      * TASK: find the cheapest item with the specified genre (MusicCategory).
      */
+    public MusicItem findCheapestByCategory() {
+        return null;
+    }
 
 
     /**
      * TASK: find the average price of items in the specified genre (MusicCategory).
      */
+    public double averagePrice() {
+        return 0;
+    }
 
 
     /**
