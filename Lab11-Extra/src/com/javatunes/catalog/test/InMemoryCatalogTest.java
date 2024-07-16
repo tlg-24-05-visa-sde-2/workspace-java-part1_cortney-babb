@@ -25,13 +25,13 @@ class InMemoryCatalogTest {
      * works correctly, you can comment out that call in main() and proceed to the next one.
      */
     public static void main(String[] args) {
-//         testFindById();
+        // testFindById();
         // testFindByKeyword();
-//         testFindByCategory();
+        // testFindByCategory();
         // testSize();
-//         testGetAll();
+        // testGetAll();
 
-//        testFindSelfTitled();
+        // testFindSelfTitled();
         testFindRockLessThan();
     }
 
@@ -59,37 +59,37 @@ class InMemoryCatalogTest {
 
 
 
-    private static void testFindById() {
-        InMemoryCatalog catalog = new InMemoryCatalog();
+//    private static void testFindById() {
+//        InMemoryCatalog catalog = new InMemoryCatalog();
+//
+//        MusicItem item = catalog.findById(6L); // autobox primitive long to Long object
+//        System.out.println(item);
+//
+//        MusicItem item2 = catalog.findById(66L); // music item not found, should return null
+//        System.out.println(item2);
+//    }
 
-        MusicItem item = catalog.findById(6L); // autobox primitive long to Long object
-        System.out.println(item);
+//    private static void testFindByKeyword() {
+//
+//    }
+//
+//    private static void testFindByCategory() {
+//        InMemoryCatalog catalog = new InMemoryCatalog();
+//
+//        Collection<MusicItem> items = catalog.findByCategory(MusicCategory.POP);
+//        dump(items);
+//
+//    }
 
-        MusicItem item2 = catalog.findById(66L); // music item not found, should return null
-        System.out.println(item2);
-    }
-
-    private static void testFindByKeyword() {
-
-    }
-
-    private static void testFindByCategory() {
-        InMemoryCatalog catalog = new InMemoryCatalog();
-
-        Collection<MusicItem> items = catalog.findByCategory(MusicCategory.POP);
-        dump(items);
-
-    }
-
-    private static void testSize() {
-    }
-
-    private static void testGetAll() {
-        InMemoryCatalog catalog = new InMemoryCatalog();
-
-        Collection<MusicItem> readOnlyItems = catalog.getAll(); // read only view of 18 songs in catalog
-        readOnlyItems.clear(); // not happening, throws exception
-    }
+//    private static void testSize() {
+//    }
+//
+//    private static void testGetAll() {
+//        InMemoryCatalog catalog = new InMemoryCatalog();
+//
+//        Collection<MusicItem> readOnlyItems = catalog.getAll(); // read only view of 18 songs in catalog
+//        readOnlyItems.clear(); // not happening, throws exception
+//    }
 
     private static void dump(Collection<MusicItem> items) {
         for (MusicItem item : items) {
