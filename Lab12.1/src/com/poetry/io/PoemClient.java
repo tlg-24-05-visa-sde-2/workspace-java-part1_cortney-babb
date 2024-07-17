@@ -9,6 +9,8 @@
 package com.poetry.io;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static java.lang.System.out;
 
@@ -19,7 +21,7 @@ public class PoemClient {
      * To run one method at a time, uncomment the call to the one you want to execute.
      */
     public static void main(String[] args) {
-         //readPoem();
+//         readPoem();
          writePoem();
     }
 
@@ -36,16 +38,25 @@ public class PoemClient {
      * The try-with-resources below allows you to initialize the stream and auto-close it.
      */
     private static void readPoem() {
-        // initialize 'reader' variable and complete the try block
-        try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                out.println(line);
-            }
-        }
-        catch (IOException e) {
+        // more efficient method using Path.of and readString
+        // Files.readAllLines processes lines and you can use foreach for each line
+        try {
+            String poem = Files.readString(Path.of("famous-poem.txt"));
+            out.println(poem);
+        } catch(IOException e) {
             e.printStackTrace();
         }
+
+        // initialize 'reader' variable and complete the try block
+//        try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                out.println(line);
+//            }
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -75,13 +86,25 @@ public class PoemClient {
     // even though we went to lunch
     // that is not okay
     private static void writePoem() {
-        try(PrintWriter writer = new PrintWriter(new FileWriter("haiku.txt"))) {
-            writer.println("that girl is hungry");
-            writer.println("even though we went to lunch");
-            writer.println("that is not okay");
-
-        } catch(IOException e) {
+        // more efficient using Path.of & writeString
+        try {
+            String haiku = """ 
+                    Cortney is hungry
+                    Even though we went to lunch
+                    I am not okay
+                    """;
+            Files.writeString(Path.of("haiku.txt"), haiku);
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        try(PrintWriter writer = new PrintWriter(new FileWriter("haiku.txt"))) {
+//            writer.println("that girl is hungry");
+//            writer.println("even though we went to lunch");
+//            writer.println("that is not okay");
+//
+//        } catch(IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
